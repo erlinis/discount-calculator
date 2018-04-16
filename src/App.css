@@ -1,0 +1,105 @@
+body{
+  font-size: 15px;
+}
+
+input {
+  border-radius: 7px;
+}
+
+input:focus {
+  /* background-color: #fffacc; */
+  background-color: #FAF9E8;
+  /* background-color: #e9f9f8; */
+  border-color: #fffaaa;
+}
+
+button {
+  color: white;
+  border-radius: 15px;
+  border-color: #7B886B;
+  /* background-color: #7B886B; */
+  background-color:#ED6A5A;
+  font-size: 1.2em;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button .primary  {
+}
+
+.App {
+  text-align: center;
+  font-family: Trebuchet MS, Arial, Verdana;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #A8CCBF;
+  height: 50px;
+  padding: 10px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-body {
+
+  background-color: #C9EAE1;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.form-row {
+  display: flex;
+}
+
+.form-group {
+  text-align: left;
+  padding: 10px;
+}
+
+.form-group label {
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+}
+
+.form-group input {
+  font-size: 1.4em;
+  /* color: #135446; */
+  color:#ED6A5A;
+}
+
+.form-group span{
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.sale-price {
+  color:#ED6A5A;
+}
+
+.saving{
+  color:#ED6A5A;
+}
+
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
