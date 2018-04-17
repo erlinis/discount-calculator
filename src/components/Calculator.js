@@ -7,9 +7,7 @@ class Calculator extends Component {
 
      this.state = {
       price: '',
-      discount: 40,
-      salePrice: 0,
-      saving: 0
+      discount: 40
      };
    }
 
@@ -17,23 +15,23 @@ class Calculator extends Component {
     var field = event.target;
     console.log(`<${field.name}>: `, field.value);
 
-    this.setState({
-      [field.name]: field.value
-    }, () => {
-      this.calculate_discount();
-    });
+    this.setState({ [field.name]: field.value });
   }
 
-  calculate_discount(){
-    var price = this.state.price;
-    var discount = this.state.discount;
-    var saving = price * (discount / 100);
-    var salePrice = price - saving;
+  calculateSaving(price, discount){
+    return price * (discount / 100);
+  }
 
-    this.setState({saving, salePrice});
+  calculateSalePrice(price, saving){
+    return price - saving;
   }
 
   render(){
+    var price     = this.state.price;
+    var discount  = this.state.discount;
+    var saving    = this.calculateSaving(price, discount);
+    var salePrice = this.calculateSalePrice(price, saving);
+
     return(
       <div>
         <div className="form-row">
@@ -64,21 +62,20 @@ class Calculator extends Component {
             <DataDisplayer
               label="Sale Price"
               styleClass="sale-price"
-              data={this.state.salePrice.toString()}/>
+              data={salePrice.toString()}/>
           </div>
 
           <div className="form-group">
             <DataDisplayer
               label="Saving"
               styleClass="saving"
-              data={this.state.saving.toString()}/>
+              data={saving.toString()}/>
           </div>
 
           <div className="form-group">
             <button> + Add </button>
           </div>
         </div>
-
       </div>
     );
   }
