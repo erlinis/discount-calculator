@@ -1,22 +1,8 @@
 import React, { Component } from 'react';
 import DataDisplayer from '../components/DataDisplayer';
+import PropTypes from "prop-types";
 
-class Calculator extends Component {
-   constructor(props){
-     super(props);
-
-     this.state = {
-      price: '',
-      discount: 40
-     };
-   }
-
-  onChangeInput = (event) => {
-    var field = event.target;
-    console.log(`<${field.name}>: `, field.value);
-
-    this.setState({ [field.name]: field.value });
-  }
+export default class Calculator extends Component {
 
   calculateSaving(price, discount){
     return price * (discount / 100);
@@ -27,8 +13,8 @@ class Calculator extends Component {
   }
 
   render(){
-    var price     = this.state.price;
-    var discount  = this.state.discount;
+    var price     = this.props.price;
+    var discount  = this.props.discount;
     var saving    = this.calculateSaving(price, discount);
     var salePrice = this.calculateSalePrice(price, saving);
 
@@ -41,8 +27,8 @@ class Calculator extends Component {
               type="number"
               name="price"
               placeholder="0"
-              onChange={this.onChangeInput}
-              value={this.state.price}/>
+              onChange={this.props.onChangeInput}
+              value={price}/>
           </div>
 
           <div className="form-group">
@@ -52,8 +38,8 @@ class Calculator extends Component {
              name="discount"
              min="1"
              max="1000"
-             onChange={ e => this.onChangeInput(e)}
-             value={this.state.discount}/>
+             onChange={ e => this.props.onChangeInput(e)}
+             value={discount}/>
           </div>
         </div>
 
@@ -73,7 +59,9 @@ class Calculator extends Component {
           </div>
 
           <div className="form-group">
-            <button> + Add </button>
+            <button onClick={() => this.props.onAddDiscount(price, discount, salePrice, saving)}>
+              + Add
+            </button>
           </div>
         </div>
       </div>
@@ -81,4 +69,9 @@ class Calculator extends Component {
   }
 }
 
-export default Calculator;
+Calculator.PropTypes = {
+ price:         PropTypes.func.number,
+ onChangeInput: PropTypes.func.isRequired,
+ onAddDiscount: PropTypes.func.isRequired
+}
+
