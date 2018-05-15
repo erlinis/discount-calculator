@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DataDisplayer from '../components/DataDisplayer';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 export default class Calculator extends Component {
 
@@ -19,58 +19,54 @@ export default class Calculator extends Component {
     var salePrice = this.calculateSalePrice(price, saving);
 
     return(
-      <div>
-        <div className="form-row">
-          <div className="form-group">
-            <label>Original price: </label>
-            <input
-              type="number"
-              name="price"
-              placeholder="0"
-              onChange={this.props.onChangeInput}
-              value={price}/>
-          </div>
+      <div className="mb-4"> 
+          <div className="flex flex-wrap -mx-3 mb-2">
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Price </label>
+              
+              <input 
+                   className="appearance-none block w-full bg-grey-lighter text-grey-darker text-lg border border-grey-lighter rounded py-3 px-4"
+                   type="number"
+                   name="price"
+                   placeholder="0"
+                   onChange={this.props.onChangeInput}
+                   value={price}/>
+            </div>
 
-          <div className="form-group">
-           <label>Discount %: </label>
-           <input
-             type="number"
-             name="discount"
-             min="1"
-             max="1000"
-             onChange={ e => this.props.onChangeInput(e)}
-             value={discount}/>
-          </div>
-        </div>
+            <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"> Discount %</label>
+              <div className="relative">
+                <input
+                  className="appearance-none block w-full bg-grey-lighter text-grey-darker text-lg border border-grey-lighter rounded py-3 px-4"
+                  type="number"
+                  name="discount"
+                  min="1"
+                  max="1000"
+                  onChange={ e => this.props.onChangeInput(e)}
+                  value={discount}/> 
+                <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"> % </div>
+              </div>
+            </div>
 
-        <div className="form-row">
-          <div className="form-group">
-            <DataDisplayer
-              label="Sale Price"
-              styleClass="sale-price"
-              data={salePrice.toString()}/>
+            <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+              <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2"> Add </label>
+               <button 
+                 className="shadow bg-teal hover:bg-teal-light text-white font-bold py-2 px-4 rounded"
+                 onClick={() => this.props.onAddDiscount(price, discount, salePrice, saving)}>
+                   Add +
+                </button>
+            </div>
           </div>
+      
+          <DataDisplayer salePrice={salePrice} price={price.toString()} discount={discount.toString()} saving={saving}/>
 
-          <div className="form-group">
-            <DataDisplayer
-              label="Saving"
-              styleClass="saving"
-              data={saving.toString()}/>
-          </div>
-
-          <div className="form-group">
-            <button onClick={() => this.props.onAddDiscount(price, discount, salePrice, saving)}>
-              + Add
-            </button>
-          </div>
-        </div>
       </div>
     );
   }
 }
 
-Calculator.PropTypes = {
- price:         PropTypes.func.number,
+Calculator.propTypes = {
+ price:         PropTypes.string,
  onChangeInput: PropTypes.func.isRequired,
  onAddDiscount: PropTypes.func.isRequired
 }

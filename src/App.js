@@ -16,7 +16,7 @@ class App extends Component {
 
   onChangeInput = (event) => {
     var field = event.target;
-    console.log(`<${field.name}>: `, field.value);
+    /* console.log(`<${field.name}>: `, field.value); */
 
     this.setState({ [field.name]: field.value });
   }
@@ -24,15 +24,15 @@ class App extends Component {
   onAddDiscount = (price, discount, salePrice, saving) => {
     var discountRow = {
       id: Date.now(),
-      price: price,
+      price: Number(price),
       discount: discount,
       saving: saving,
-      salePrice: salePrice
+      salePrice: Number(salePrice)
     }
 
     this.setState({
       discounts: [ discountRow, ...this.state.discounts ]
-    }, clearInput());
+    }, this.clearInput());
   }
 
   clearInput() {

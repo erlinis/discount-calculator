@@ -2,15 +2,9 @@ body{
   font-size: 15px;
 }
 
-input {
-  border-radius: 7px;
-}
 
 input:focus {
-  /* background-color: #fffacc; */
   background-color: #FAF9E8;
-  /* background-color: #e9f9f8; */
-  border-color: #fffaaa;
 }
 
 button {
@@ -45,7 +39,7 @@ button .primary  {
 }
 
 .App-header {
-  background-color: #A8CCBF;
+  background-color: #4DC0B5;
   height: 50px;
   padding: 10px;
   color: white;
@@ -56,47 +50,10 @@ button .primary  {
 }
 
 .App-body {
-
-  background-color: #C9EAE1;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
 }
-
-.form-row {
-  display: flex;
-}
-
-.form-group {
-  text-align: left;
-  padding: 10px;
-}
-
-.form-group label {
-  font-size: 1.2em;
-  font-weight: bold;
-  display: block;
-}
-
-.form-group input {
-  font-size: 1.4em;
-  /* color: #135446; */
-  color:#ED6A5A;
-}
-
-.form-group span{
-  font-size: 1.4em;
-  font-weight: bold;
-}
-
-.sale-price {
-  color:#ED6A5A;
-}
-
-.saving{
-  color:#ED6A5A;
-}
-
 
 
 @keyframes App-logo-spin {
