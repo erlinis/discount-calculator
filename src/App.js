@@ -35,9 +35,17 @@ class App extends Component {
     }, this.clearInput());
   }
 
+  onDeleteDiscount = (itemId) => {
+    this.setState({
+      discounts: this.state.discounts.filter(item => item.id !== itemId)
+    });
+  }
+
   clearInput() {
     this.setState({ price: ''});
   }
+
+
 
   render() {
     return (
@@ -51,7 +59,9 @@ class App extends Component {
             discount={this.state.discount}
             onAddDiscount={this.onAddDiscount}
             onChangeInput={this.onChangeInput}/>
-          <DiscountList discounts={this.state.discounts}/>
+          <DiscountList 
+            discounts={this.state.discounts}
+            onDeleteDiscount={this.onDeleteDiscount}/>
         </div>
       </div>
     );
