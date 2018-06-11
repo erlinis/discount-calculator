@@ -19,19 +19,20 @@ export default class Calculator extends Component {
     var salePrice = this.calculateSalePrice(price, saving);
 
     return(
-      <div className="mb-4"> 
+      <div className="mb-4">
           <div className="flex flex-wrap -mx-3 mb-2">
             <div className="md:w-1/2 px-1 pl-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Price </label>
-              
-              <input 
+
+              <input
                  className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-4"
-                 type="number" 
+                 type="number"
                  name="price"
                  min="1"
                  max="1000000000000"
                  placeholder="0"
                  autoFocus
+                 ref={this.props.priceInputRef}
                  onChange={this.props.onChangeInput}
                  value={price}/>
             </div>
@@ -46,25 +47,25 @@ export default class Calculator extends Component {
                   min="1"
                   max="1000"
                   onChange={ e => this.props.onChangeInput(e)}
-                  value={discount}/> 
+                  value={discount}/>
                 <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darkest"> % </div>
               </div>
             </div>
 
             <div className="md:w-1/4 px-1 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2"> Add </label>
-               <button 
+               <button
                  className="shadow bg-teal hover:bg-teal-light text-white py-2 px-4 rounded-lg"
                  onClick={() => this.props.onAddDiscount(price, discount, salePrice, saving)}>
                    Add +
                 </button>
             </div>
           </div>
-      
-          <DataDisplayer 
-            salePrice={salePrice} 
-            price={price.toString()} 
-            discount={discount.toString()} 
+
+          <DataDisplayer
+            salePrice={salePrice}
+            price={price.toString()}
+            discount={discount.toString()}
             saving={saving}
           />
       </div>
@@ -74,6 +75,7 @@ export default class Calculator extends Component {
 
 Calculator.propTypes = {
  price:         PropTypes.string,
+ priceInputRef: PropTypes.object,
  onChangeInput: PropTypes.func.isRequired,
  onAddDiscount: PropTypes.func.isRequired
 }

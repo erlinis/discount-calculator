@@ -9,25 +9,25 @@ function renderRow(row, onDeleteDiscount){
     <div key={row.id}>
       <div className="bg-white border border-dotted border-grey-light">
         <div className="flex justify-start">
-          <div className="rounded-r-lg bg-orange p-2 mt-2 text-sm text-white"> {row.discount} % OFF </div>
+          <div className="rounded-r-lg bg-orange p-2 mt-2 text-xs text-white"> {row.discount} % OFF </div>
         </div>
 
-        <div className="flex justify-start text-sm">
-          <div className="w-1/3 p-2">
-            Price: 
-            <div className="text-red-light p-2"> {formatNumber(row.price)} </div>
+        <div className="flex justify-start text-sm pt-2">
+          <div className="w-1/3">
+            PRICE:
+            <div className="text-red-light"> {formatNumber(row.price)} </div>
           </div>
-          <div className="w-1/3 p-2">
-            Saving:
-            <div className="text-teal-dark p-2">{formatNumber(row.saving)}</div>
+          <div className="w-1/3">
+            SAVING:
+            <div className="text-teal-dark">{formatNumber(row.saving)}</div>
           </div>
-          <div className="w-1/3 p-2">
-            Sale Price:
-            <div className="text-teal-darker font-bold text-xl p-2">{formatNumber(row.salePrice)}</div>
+          <div className="w-1/3">
+            SALE PRICE:
+            <div className="text-teal-darker font-bold text-md">{formatNumber(row.salePrice)}</div>
           </div>
           <div className="w-1/4 p-2">
-            <button 
-              className="bg-white hover:bg-teal-light hover:text-white text-grey-dark font-semibold py-2 px-4 border border-grey-light rounded-lg shadow"
+            <button
+              className="bg-white hover:bg-teal-light hover:text-white text-grey-dark font-semibold border border-grey-light rounded-lg shadow"
               onClick={ () => onDeleteDiscount(row.id)}>
               <svg className="icon icon-bin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path d="M2 5v10c0 0.55 0.45 1 1 1h9c0.55 0 1-0.45 1-1v-10h-11zM5 14h-1v-7h1v7zM7 14h-1v-7h1v7zM9 14h-1v-7h1v7zM11 14h-1v-7h1v7z"></path>
@@ -48,7 +48,7 @@ function renderTotal(discounts){
 
   return (
     <div className="flex justify-end text-base pr-5 pt-6">
-      <div className="flex-col"> 
+      <div className="flex-col">
         <div className="text-teal-dark pb-2 text-right"> Buy:  {formatNumber(totalPrices)} </div>
         <div className="text-teal-dark pb-2 text-right"> Savings: {formatNumber(totalSaving)}</div>
         <div className="text-teal-darker font-bold text-lg pb-2 text-right" >Pay: {formatNumber(totalSalePrices)}</div>

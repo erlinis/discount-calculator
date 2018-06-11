@@ -6,6 +6,8 @@ import DiscountList from './components/DiscountList';
 class App extends Component {
   constructor(props){
     super(props);
+    this.priceInputRef = React.createRef();
+    this.focusPriceInput = this.focusPriceInput.bind(this);
 
     this.state = {
       discounts: [],
@@ -32,20 +34,25 @@ class App extends Component {
 
     this.setState({
       discounts: [ discountRow, ...this.state.discounts ]
-    }, this.clearInput());
+    }, this.clearInput(), this.focusPriceInput());
   }
 
   onDeleteDiscount = (itemId) => {
     this.setState({
       discounts: this.state.discounts.filter(item => item.id !== itemId)
-    });
+    }, this.focusPriceInput());
   }
 
   clearInput() {
     this.setState({ price: ''});
   }
 
+  focusPriceInput() {
+    // Explicitly focus the text input using the raw DOM API
+    // Note: we're accessing "current" to get the DOM node
+    this.priceInputRef.current.focus();
 
+  }
 
   render() {
     return (
@@ -56,10 +63,11 @@ class App extends Component {
         <div className="App-body">
           <Calculator
             price={this.state.price}
+            priceInputRef={this.priceInputRef}
             discount={this.state.discount}
             onAddDiscount={this.onAddDiscount}
             onChangeInput={this.onChangeInput}/>
-          <DiscountList 
+          <DiscountList
             discounts={this.state.discounts}
             onDeleteDiscount={this.onDeleteDiscount}/>
         </div>
