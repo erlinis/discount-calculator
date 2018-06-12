@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DataDisplayer from '../components/DataDisplayer';
+import Label from '../components/Label';
 import PropTypes from 'prop-types';
 
 export default class Calculator extends Component {
@@ -22,11 +23,12 @@ export default class Calculator extends Component {
       <div className="mb-4">
           <div className="flex flex-wrap -mx-3 mb-2">
             <div className="md:w-1/2 px-1 pl-3 mb-6 md:mb-0">
-              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Price </label>
+              <Label inputFor="price" text="Price" />
 
               <input
                  className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-4"
                  type="number"
+                 id="price"
                  name="price"
                  min="1"
                  max="1000000000000"
@@ -38,11 +40,12 @@ export default class Calculator extends Component {
             </div>
 
             <div className="md:w-1/4 px-1 mb-6 md:mb-0">
-              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"> Discount %</label>
+              <Label inputFor="discount" text="Discount %" />
               <div className="relative">
                 <input
                   className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-4"
                   type="number"
+                  id="discount"
                   name="discount"
                   min="1"
                   max="1000"
@@ -53,7 +56,7 @@ export default class Calculator extends Component {
             </div>
 
             <div className="md:w-1/4 px-1 mb-6 md:mb-0">
-              <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2"> Add </label>
+              <label className="block uppercase text-white mb-2">...</label>
                <button
                  className="shadow bg-teal hover:bg-teal-light text-white py-2 px-4 rounded-lg"
                  onClick={() => this.props.onAddDiscount(price, discount, salePrice, saving)}>

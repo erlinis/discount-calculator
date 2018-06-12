@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Label from '../components/Label';
 import _ from 'lodash';
 
 import { formatNumber } from '../lib/format';
@@ -14,20 +15,20 @@ function renderRow(row, onDeleteDiscount){
 
         <div className="flex justify-start text-sm pt-2">
           <div className="w-1/3">
-            PRICE:
+            <Label text="Price" />
             <div className="text-red-light"> {formatNumber(row.price)} </div>
           </div>
           <div className="w-1/3">
-            SAVING:
+            <Label text="Saving" />
             <div className="text-teal-dark">{formatNumber(row.saving)}</div>
           </div>
           <div className="w-1/3">
-            SALE PRICE:
+            <Label text="Sale Price" />
             <div className="text-teal-darker font-bold text-md">{formatNumber(row.salePrice)}</div>
           </div>
           <div className="w-1/4 p-2">
             <button
-              className="bg-white hover:bg-teal-light hover:text-white text-grey-dark font-semibold border border-grey-light rounded-lg shadow"
+              className="bg-white hover:bg-teal-light hover:text-white text-grey-dark font-semibold border border-grey-light rounded-lg shadow text-sm"
               onClick={ () => onDeleteDiscount(row.id)}>
               <svg className="icon icon-bin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path d="M2 5v10c0 0.55 0.45 1 1 1h9c0.55 0 1-0.45 1-1v-10h-11zM5 14h-1v-7h1v7zM7 14h-1v-7h1v7zM9 14h-1v-7h1v7zM11 14h-1v-7h1v7z"></path>
