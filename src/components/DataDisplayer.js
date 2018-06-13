@@ -5,13 +5,13 @@ import { formatNumber } from "../lib/format"
 
 export default function DataDisplayer({saving, discount, price, salePrice}) {
   return(
-    <div className="bg-teal-lightest shadow-md rounded">
+    <div className="data-discount-color shadow-md rounded">
       <div className="flex justify-end">
         <div className="rounded-l-lg bg-red p-2 pl-8 mt-3 text-white"> {discount} % OFF </div>
       </div>
 
       <div className="items-center">
-        <div className="bg-teal-lightest p-3 rounded-sm justify-between">
+        <div className="data-discount-color p-3 rounded-sm justify-between">
           <p className="text-red-light text-md "> Price: {formatNumber(price)} </p>
           <div className="mb-2">
             <div className="text-teal-darker font-bold text-4xl p-3"> {formatNumber(salePrice)} </div>

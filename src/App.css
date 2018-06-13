@@ -1,5 +1,6 @@
 body{
   font-size: 15px;
+  background-color: #4DC0B5;
 }
 
 input:focus {
@@ -34,7 +35,7 @@ button .primary  {
 
 .App-header {
   background-color: #4DC0B5;
-  height: 50px;
+  height: 52px;
   padding: 10px;
   color: white;
 }
@@ -47,6 +48,12 @@ button .primary  {
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
+  background-color: #EBF5FB;
+  min-height: 800px;
+}
+
+.data-discount-color {
+ background-color: #FEF9E9;
 }
 
 .icon {

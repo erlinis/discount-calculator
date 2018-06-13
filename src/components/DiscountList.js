@@ -60,7 +60,7 @@ function renderTotal(discounts){
 
 export default function DiscountList({ discounts, onDeleteDiscount }) {
   return(
-    <div className="bg-teal-lightest shadow-md rounded p-2">
+    <div className="data-discount-color shadow-md rounded p-2">
       { discounts.map((item, index) => renderRow(item, onDeleteDiscount)) }
       { renderTotal(discounts) }
     </div>
