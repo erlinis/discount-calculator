@@ -21,8 +21,8 @@ export default class Calculator extends Component {
 
     return(
       <div className="mb-4">
-          <div className="flex flex-wrap -mx-3 mb-2">
-            <div className="md:w-1/2 px-1 pl-3 mb-6 md:mb-0">
+          <div className="flex flex-wrap -mx-3 mb-1">
+            <div className="md:w-1/2 px-1 pl-3 mb-3 md:mb-0">
               <Label inputFor="price" text="Price" />
 
               <input
@@ -39,7 +39,7 @@ export default class Calculator extends Component {
                  value={price}/>
             </div>
 
-            <div className="md:w-1/4 px-1 mb-6 md:mb-0">
+            <div className="md:w-1/4 px-1 mb-3 md:mb-0">
               <Label inputFor="discount" text="Discount %" />
               <div className="relative">
                 <input
@@ -55,7 +55,7 @@ export default class Calculator extends Component {
               </div>
             </div>
 
-            <div className="md:w-1/4 px-1 mb-6 md:mb-0">
+            <div className="md:w-1/4 px-1 mb-3 md:mb-0">
               <label className="block uppercase text-white mb-2">...</label>
                <button
                  className="shadow bg-teal hover:bg-teal-light text-white py-2 px-4 rounded-lg"

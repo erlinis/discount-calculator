@@ -12,9 +12,9 @@ export default function DataDisplayer({saving, discount, price, salePrice}) {
 
       <div className="items-center">
         <div className="bg-teal-lightest p-3 rounded-sm justify-between">
-          <p className="text-red-light text-lg line-through"> Price: {formatNumber(price)} </p>
+          <p className="text-red-light text-md "> Price: {formatNumber(price)} </p>
           <div className="mb-2">
-            <div className="text-teal-darker font-bold text-4xl mb-2 p-4"> {formatNumber(salePrice)} </div>
+            <div className="text-teal-darker font-bold text-4xl p-3"> {formatNumber(salePrice)} </div>
             <div className="text-sm">
               <p className="text-grey-dark italic">You save: {formatNumber(saving)}</p>
             </div>
