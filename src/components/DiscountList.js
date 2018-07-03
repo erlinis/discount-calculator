@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Label from '../components/Label';
-import _ from 'lodash';
+import sum from 'lodash/sum';
 
 import { formatNumber } from '../lib/format';
 
@@ -43,9 +43,9 @@ function renderRow(row, onDeleteDiscount){
 }
 
 function renderTotal(discounts){
-  var totalPrices = _.sum(discounts.map((item) => item.price))
-  var totalSaving = _.sum(discounts.map((item) => item.saving))
-  var totalSalePrices = _.sum(discounts.map((item) => item.salePrice))
+  var totalPrices = sum(discounts.map((item) => item.price))
+  var totalSaving = sum(discounts.map((item) => item.saving))
+  var totalSalePrices = sum(discounts.map((item) => item.salePrice))
 
   return (
     <div className="flex justify-end text-base pr-5 pt-6">
