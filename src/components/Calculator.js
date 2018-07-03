@@ -21,56 +21,54 @@ export default class Calculator extends Component {
 
     return(
       <div className="mb-4">
-          <div className="flex flex-wrap -mx-3 mb-1">
-            <div className="md:w-1/2 px-1 pl-3 mb-3 md:mb-0">
-              <Label inputFor="price" text="Price" />
+        <div className="flex flex-wrap -ml-3 mb-1">
+          <div className="w-2/3 sm:w-1/2 mb-3 pl-3">
+            <Label inputFor="price" text="Price" />
+            <input
+              className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
+              type="number"
+              id="price"
+              name="price"
+              min="1"
+              max="1000000000000"
+              placeholder="0"
+              autoFocus
+              ref={this.props.priceInputRef}
+              onChange={this.props.onChangeInput}
+              value={price}/>
+          </div>
 
+          <div className="w-1/3 sm:w-1/4 mb-3 pl-3">
+            <Label inputFor="discount" text="Discount %" />
+            <div className="relative">
               <input
-                 className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-4"
-                 type="number"
-                 id="price"
-                 name="price"
-                 min="1"
-                 max="1000000000000"
-                 placeholder="0"
-                 autoFocus
-                 ref={this.props.priceInputRef}
-                 onChange={this.props.onChangeInput}
-                 value={price}/>
-            </div>
-
-            <div className="md:w-1/4 px-1 mb-3 md:mb-0">
-              <Label inputFor="discount" text="Discount %" />
-              <div className="relative">
-                <input
-                  className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-4"
-                  type="number"
-                  id="discount"
-                  name="discount"
-                  min="1"
-                  max="1000"
-                  onChange={ e => this.props.onChangeInput(e)}
-                  value={discount}/>
-                <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darkest"> % </div>
-              </div>
-            </div>
-
-            <div className="md:w-1/4 px-1 mb-3 md:mb-0">
-              <label className="block uppercase text-white mb-2">...</label>
-               <button
-                 className="shadow bg-teal hover:bg-teal-light text-white py-2 px-4 rounded-lg"
-                 onClick={() => this.props.onAddDiscount(price, discount, salePrice, saving)}>
-                   Add +
-                </button>
+                className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
+                type="number"
+                id="discount"
+                name="discount"
+                min="1"
+                max="1000"
+                onChange={ e => this.props.onChangeInput(e)}
+                value={discount}/>
+              <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darkest"> % </div>
             </div>
           </div>
 
-          <DataDisplayer
-            salePrice={salePrice}
-            price={price.toString()}
-            discount={discount.toString()}
-            saving={saving}
-          />
+          <div className="flex items-end w-full sm:w-1/4 pl-3 mb-3">
+              <button
+                className="shadow bg-teal hover:bg-teal-light text-white py-3 px-3 rounded-lg flex-1"
+                onClick={() => this.props.onAddDiscount(price, discount, salePrice, saving)}>
+                  Add +
+              </button>
+          </div>
+        </div>
+
+        <DataDisplayer
+          salePrice={salePrice}
+          price={price.toString()}
+          discount={discount.toString()}
+          saving={saving}
+        />
       </div>
     );
   }

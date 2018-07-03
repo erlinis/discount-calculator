@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Calculator from './components/Calculator';
 import DiscountList from './components/DiscountList';
 
@@ -57,10 +56,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="App-header flex items-center justify-center">
           <h1 className="App-title">Discount Calculator</h1>
         </header>
         <div className="App-body">
+          <div className="container">
           <Calculator
             price={this.state.price}
             priceInputRef={this.priceInputRef}
@@ -70,6 +70,7 @@ class App extends Component {
           <DiscountList
             discounts={this.state.discounts}
             onDeleteDiscount={this.onDeleteDiscount}/>
+          </div>
         </div>
       </div>
     );
