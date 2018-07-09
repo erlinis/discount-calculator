@@ -50,9 +50,9 @@ function renderTotal(discounts){
   return (
     <div className="flex justify-end text-base pr-5 pt-6">
       <div className="flex-col">
-        <div className="text-teal-dark pb-2 text-right"> Buy:  {formatNumber(totalPrices)} </div>
+        <div className="text-teal-dark pb-2 text-right"> Grand Total:  {formatNumber(totalPrices)} </div>
         <div className="text-teal-dark pb-2 text-right"> Savings: {formatNumber(totalSaving)}</div>
-        <div className="text-teal-darker font-bold text-lg pb-2 text-right" >Pay: {formatNumber(totalSalePrices)}</div>
+        <div className="text-teal-darker font-bold text-lg pb-2 text-right" >Total Due: {formatNumber(totalSalePrices)}</div>
       </div>
     </div>
   );
