@@ -3,8 +3,7 @@
 
 html,
 body,
-#root,
-.App {
+#root {
   background-color: #ebf5fb;
 }
 
@@ -41,7 +40,7 @@ button:hover {
   padding-right: 20px;
 }
 
-.App {
+#root {
   text-align: center;
   font-family: Trebuchet MS, Arial, Verdana;
 }
@@ -82,6 +81,44 @@ button:hover {
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
+}
+
+.add-home {
+  position: fixed;
+  bottom: 15px;
+  margin-left: 28px;
+  margin-right: 28px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #2E4052;
+  color: white;
+  text-align: left;
+}
+
+.add-home:after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #2E4052;
+  border-width: 14px;
+  width: 0;
+  height: 0;
+  top: 100%;
+  left: 50%;
+  margin-left: -14px;
+}
+
+.add-home__text {
+  font-size: 0.9rem;
+}
+
+.add-home__close {
+  font-size: 1rem;
+  position: absolute;
+  top: 0;
+  right: 5px;
 }
 
 @keyframes App-logo-spin {

@@ -597,12 +597,6 @@ textarea::-webkit-input-placeholder {
   opacity: .5;
 }
 
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
-  color: inherit;
-  opacity: .5;
-}
-
 input::-ms-input-placeholder,
 textarea::-ms-input-placeholder {
   color: inherit;
@@ -4156,6 +4150,14 @@ table {
   stroke: currentColor;
 }
 
+.table-auto {
+  table-layout: auto;
+}
+
+.table-fixed {
+  table-layout: fixed;
+}
+
 .text-left {
   text-align: left;
 }
@@ -4720,8 +4722,7 @@ table {
 
 html,
 body,
-#root,
-.App {
+#root {
   background-color: #ebf5fb;
 }
 
@@ -4758,7 +4759,7 @@ button:hover {
   padding-right: 20px;
 }
 
-.App {
+#root {
   text-align: center;
   font-family: Trebuchet MS, Arial, Verdana;
 }
@@ -4800,6 +4801,44 @@ button:hover {
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
+}
+
+.add-home {
+  position: fixed;
+  bottom: 15px;
+  margin-left: 28px;
+  margin-right: 28px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #2e4052;
+  color: white;
+  text-align: left;
+}
+
+.add-home:after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #2e4052;
+  border-width: 14px;
+  width: 0;
+  height: 0;
+  top: 100%;
+  left: 50%;
+  margin-left: -14px;
+}
+
+.add-home__text {
+  font-size: .9rem;
+}
+
+.add-home__close {
+  font-size: 1rem;
+  position: absolute;
+  top: 0;
+  right: 5px;
 }
 
 @-webkit-keyframes App-logo-spin {
@@ -8327,6 +8366,14 @@ button:hover {
 
   .sm\:shadow-md {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
+  }
+
+  .sm\:table-auto {
+    table-layout: auto;
+  }
+
+  .sm\:table-fixed {
+    table-layout: fixed;
   }
 
   .sm\:text-left {
@@ -12383,6 +12430,14 @@ button:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
   }
 
+  .md\:table-auto {
+    table-layout: auto;
+  }
+
+  .md\:table-fixed {
+    table-layout: fixed;
+  }
+
   .md\:text-left {
     text-align: left;
   }
@@ -16437,6 +16492,14 @@ button:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
   }
 
+  .lg\:table-auto {
+    table-layout: auto;
+  }
+
+  .lg\:table-fixed {
+    table-layout: fixed;
+  }
+
   .lg\:text-left {
     text-align: left;
   }
@@ -20489,6 +20552,14 @@ button:hover {
 
   .xl\:shadow-md {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
+  }
+
+  .xl\:table-auto {
+    table-layout: auto;
+  }
+
+  .xl\:table-fixed {
+    table-layout: fixed;
   }
 
   .xl\:text-left {

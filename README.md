@@ -29,4 +29,4 @@ You will also see any lint errors in the console.
 
 ## Icons
 
-Icons required to be a PWA created using: [https://realfavicongenerator.net/](https://realfavicongenerator.net/)
+Icons required to be a PWA created using: [https://realfavicongenerator.net/](https://realfavicongenerator.net/)¡
