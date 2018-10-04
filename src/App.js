@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Calculator from './components/Calculator';
 import DiscountList from './components/DiscountList';
+import AddHomePopup from './components/AddHomePopup';
+import { isIos, isInStandaloneMode } from './lib/appleDeviceDetector';
 
 class App extends Component {
   constructor(props){
@@ -11,9 +13,24 @@ class App extends Component {
     this.state = {
       discounts: [],
       price: '',
-      discount: 40
+      discount: 40,
+      showInstallMessage: this.isAppleDevice() && !this.getInstallMessage()
     }
   }
+
+  getInstallMessage = () => {
+    const item = localStorage.getItem('@discount/installMessage');
+    if(item === 'true') {
+      return true
+    }
+    return false;
+  }
+
+  storeInstallMessage = () => {
+    localStorage.setItem('@discount/installMessage', true);
+  }
+
+  isAppleDevice = () => isIos() && !isInStandaloneMode()
 
   onChangeInput = (event) => {
     var field = event.target;
@@ -50,12 +67,19 @@ class App extends Component {
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
     this.priceInputRef.current.focus();
+  }
 
+  onPopupPress = (e) => {
+    this.setState({
+      showInstallMessage: false
+    }, () => {
+      this.storeInstallMessage();
+    })
   }
 
   render() {
     return (
-      <div className="App">
+      <>
         <header className="App-header flex items-center justify-center">
           <h1 className="App-title">Discount Calculator</h1>
         </header>
@@ -71,8 +95,11 @@ class App extends Component {
             discounts={this.state.discounts}
             onDeleteDiscount={this.onDeleteDiscount}/>
           </div>
+          {
+            this.state.showInstallMessage ? <AddHomePopup onPress={this.onPopupPress} /> : null
+          }
         </div>
-      </div>
+      </>
     );
   }
 }
