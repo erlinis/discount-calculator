@@ -11,7 +11,7 @@ class App extends Component {
     this.focusPriceInput = this.focusPriceInput.bind(this);
 
     this.state = {
-      discounts: [],
+      discounts: this.getDiscountList(),
       price: '',
       discount: 40,
       showInstallMessage: this.isAppleDevice() && !this.getInstallMessage()
@@ -34,7 +34,7 @@ class App extends Component {
 
   onChangeInput = (event) => {
     var field = event.target;
-    /* console.log(`<${field.name}>: `, field.value); */
+    /* console.log(`<${field.name}>: `, field;.value); */
 
     this.setState({ [field.name]: field.value });
   }
@@ -49,24 +49,41 @@ class App extends Component {
     }
 
     this.setState({
-      discounts: [ discountRow, ...this.state.discounts ]
-    }, this.clearInput(), this.focusPriceInput());
+      discounts: [ discountRow, ...this.state.discounts ],
+      price: '',
+    }, () => {
+               this.focusPriceInput();
+               this.storeDiscountList();
+             }
+    );
   }
 
   onDeleteDiscount = (itemId) => {
     this.setState({
       discounts: this.state.discounts.filter(item => item.id !== itemId)
-    }, this.focusPriceInput());
-  }
-
-  clearInput() {
-    this.setState({ price: ''});
+    }, () => {
+               this.focusPriceInput();
+               this.storeDiscountList();
+             }
+    );
   }
 
   focusPriceInput() {
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
     this.priceInputRef.current.focus();
+  }
+
+  storeDiscountList() {
+    localStorage.setItem('@discount/discountList', JSON.stringify(this.state.discounts));
+  }
+
+  getDiscountList() {
+    try{
+      return JSON.parse(localStorage.getItem('@discount/discountList') || []);
+    } catch (e) {
+      return [];
+    }
   }
 
   onPopupPress = (e) => {

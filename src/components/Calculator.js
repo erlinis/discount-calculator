@@ -48,7 +48,7 @@ export default class Calculator extends Component {
                 name="discount"
                 min="1"
                 max="1000"
-                onChange={ e => this.props.onChangeInput(e)}
+                onChange={this.props.onChangeInput}
                 value={discount}/>
               <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darkest"> % </div>
             </div>
