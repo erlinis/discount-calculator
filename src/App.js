@@ -14,6 +14,7 @@ class App extends Component {
       discounts: this.getDiscountList(),
       price: '',
       discount: 40,
+      description: '',
       showInstallMessage: this.isAppleDevice() && !this.getInstallMessage()
     }
   }
@@ -39,18 +40,20 @@ class App extends Component {
     this.setState({ [field.name]: field.value });
   }
 
-  onAddDiscount = (price, discount, salePrice, saving) => {
+  onAddDiscount = (price, discount, salePrice, saving, description) => {
     var discountRow = {
       id: Date.now(),
       price: Number(price),
       discount: discount,
       saving: saving,
-      salePrice: Number(salePrice)
+      salePrice: Number(salePrice),
+      description: description
     }
 
     this.setState({
       discounts: [ discountRow, ...this.state.discounts ],
       price: '',
+      description: '',
     }, () => {
                this.focusPriceInput();
                this.storeDiscountList();
@@ -104,6 +107,7 @@ class App extends Component {
           <div className="container">
           <Calculator
             price={this.state.price}
+            description={this.state.description}
             priceInputRef={this.priceInputRef}
             discount={this.state.discount}
             onAddDiscount={this.onAddDiscount}

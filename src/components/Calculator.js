@@ -21,8 +21,8 @@ export default class Calculator extends Component {
 
     return(
       <div className="mb-4">
-        <div className="flex flex-wrap -ml-3 mb-1">
-          <div className="w-2/3 sm:w-1/2 mb-3 pl-3">
+        <div className="flex flex-wrap -ml-3 mb-1 -mt-3">
+          <div className="w-2/3 sm:w-3/4 mb-3 pl-3">
             <Label inputFor="price" text="Price" />
             <input
               className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
@@ -47,17 +47,32 @@ export default class Calculator extends Component {
                 id="discount"
                 name="discount"
                 min="1"
-                max="1000"
+                max="100"
                 onChange={this.props.onChangeInput}
                 value={discount}/>
               <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darkest"> % </div>
             </div>
           </div>
 
-          <div className="flex items-end w-full sm:w-1/4 pl-3 mb-3">
+
+          <div className="w-3/4 sm:w-3/4 mb-3 pl-3">
+            <Label inputFor="description" text="Description"/>
+            <div className="relative">
+              <input
+                className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
+                type="text"
+                id="description"
+                name="description"
+                max="100"
+                onChange={this.props.onChangeInput}
+                value={this.props.description}/>
+            </div>
+          </div>
+
+          <div className="flex items-end w-1/4 sm:w-1/4 pl-3 mb-3">
               <button
                 className="shadow bg-teal hover:bg-teal-light text-white py-3 px-3 rounded-lg flex-1"
-                onClick={() => this.props.onAddDiscount(price, discount, salePrice, saving)}>
+                onClick={() => this.props.onAddDiscount(price, discount, salePrice, saving, this.props.description)}>
                   Add +
               </button>
           </div>
@@ -68,6 +83,7 @@ export default class Calculator extends Component {
           price={price.toString()}
           discount={discount.toString()}
           saving={saving}
+          description={this.props.description}
         />
       </div>
     );
@@ -76,6 +92,7 @@ export default class Calculator extends Component {
 
 Calculator.propTypes = {
  price:         PropTypes.string,
+ description:   PropTypes.string,
  priceInputRef: PropTypes.object,
  onChangeInput: PropTypes.func.isRequired,
  onAddDiscount: PropTypes.func.isRequired

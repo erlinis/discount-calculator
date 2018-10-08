@@ -3,11 +3,17 @@ import PropTypes from "prop-types";
 
 import { formatNumber } from "../lib/format"
 
-export default function DataDisplayer({saving, discount, price, salePrice}) {
+export default function DataDisplayer({saving, discount, price, salePrice, description}) {
   return(
     <div className="data-discount-color shadow-md rounded">
-      <div className="flex justify-end">
-        <div className="rounded-l-lg bg-red p-2 pl-8 mt-3 text-white"> {discount} % OFF </div>
+      <div className="flex pt-3 mb-3">
+        <div className="w-1/8">
+          <span className="rounded-r-lg bg-red p-1 pl-2 pr-2 text-md text-white"> {discount} % OFF </span>
+        </div>
+
+        <div className="w-7/8 ml-5">
+          <span className="text-md text-orange-darker uppercase">{description}</span>
+        </div>
       </div>
 
       <div className="items-center">
@@ -29,5 +35,6 @@ DataDisplayer.propTypes = {
 	price:     PropTypes.string.isRequired,
   discount:  PropTypes.string.isRequired,
   saving:    PropTypes.number.isRequired,
-  salePrice: PropTypes.number.isRequired
+  salePrice: PropTypes.number.isRequired,
+  description: PropTypes.string
 }

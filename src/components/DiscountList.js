@@ -9,8 +9,14 @@ function renderRow(row, onDeleteDiscount){
   return (
     <div key={row.id}>
       <div className="bg-white border border-dotted border-grey-light">
-        <div className="flex justify-start">
-          <div className="rounded-r-lg bg-orange p-2 mt-2 text-xs text-white"> {row.discount} % OFF </div>
+        <div className="flex pt-3 mb-3">
+          <div className="w-1/8">
+            <span className="rounded-r-lg bg-orange p-1 pr-2 text-xs text-white"> {row.discount} % OFF </span>
+          </div>
+
+          <div className="w-7/8 ml-5">
+            <span className="text-sm text-orange-darker uppercase">{row.description}</span>
+          </div>
         </div>
 
         <div className="flex justify-start text-sm pt-2">
@@ -28,9 +34,9 @@ function renderRow(row, onDeleteDiscount){
           </div>
           <div className="w-1/4 p-2">
             <button
-              className="bg-white hover:bg-teal-light hover:text-white text-grey-dark font-semibold border border-grey-light rounded-lg shadow text-sm"
+              className="hover:text-grey-darker font-semibold text-orange-dark"
               onClick={ () => onDeleteDiscount(row.id)}>
-              <svg className="icon"><use xlinkHref="#icon-bin"></use></svg>
+              <svg className="icon"><use xlinkHref="#icon-bin"><title>Remove</title></use></svg>
             </button>
           </div>
         </div>
@@ -45,7 +51,7 @@ function renderTotal(discounts){
   var totalSalePrices = sum(discounts.map((item) => item.salePrice))
 
   return (
-    <div className="flex justify-end text-base pr-5 pt-6">
+    <div className="flex justify-end text-base pr-2 pt-3">
       <div className="flex-col">
         <div className="text-teal-dark pb-2 text-right"> Grand Total:  {formatNumber(totalPrices)} </div>
         <div className="text-teal-dark pb-2 text-right"> Savings: {formatNumber(totalSaving)}</div>
