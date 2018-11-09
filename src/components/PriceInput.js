@@ -5,7 +5,7 @@ export default class PriceInput extends Component {
   render() {
     return (
       <input
-         className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
+         className="input appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
          type="number"
          id="price"
          name="price"
