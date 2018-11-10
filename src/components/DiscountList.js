@@ -34,7 +34,7 @@ function renderRow(row, onDeleteDiscount){
           </div>
           <div className="w-1/4 p-2">
             <button
-              className="hover:text-grey-darker font-semibold text-orange-dark"
+              className="button hover:text-grey-darker font-semibold text-orange-dark"
               onClick={ () => onDeleteDiscount(row.id)}>
               <svg className="icon"><use xlinkHref="#icon-bin"><title>Remove</title></use></svg>
             </button>

@@ -25,7 +25,7 @@ export default class Calculator extends Component {
           <div className="w-2/3 sm:w-3/4 mb-3 pl-3">
             <Label inputFor="price" text="Price" />
             <input
-              className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
+              className="input appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
               type="number"
               id="price"
               name="price"
@@ -42,7 +42,7 @@ export default class Calculator extends Component {
             <Label inputFor="discount" text="Discount %" />
             <div className="relative">
               <input
-                className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
+                className="input appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
                 type="number"
                 id="discount"
                 name="discount"
@@ -59,7 +59,7 @@ export default class Calculator extends Component {
             <Label inputFor="description" text="Description"/>
             <div className="relative">
               <input
-                className="appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
+                className="input appearance-none block w-full bg-grey-white text-grey-darkest text-lg border border-grey-light shadow rounded py-3 px-3"
                 type="text"
                 id="description"
                 name="description"
@@ -71,7 +71,7 @@ export default class Calculator extends Component {
 
           <div className="flex items-end w-1/4 sm:w-1/4 pl-3 mb-3">
               <button
-                className="shadow bg-teal hover:bg-teal-light text-white py-3 px-3 rounded-lg flex-1"
+                className="button shadow bg-teal hover:bg-teal-light text-white py-3 px-3 rounded-lg flex-1"
                 onClick={() => this.props.onAddDiscount(price, discount, salePrice, saving, this.props.description)}>
                   Add +
               </button>

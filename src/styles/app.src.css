@@ -1,13 +1,13 @@
-@tailwind preflight;
+@tailwind components;
 @tailwind utilities;
 
-html,
-body,
+.html,
+.body,
 #root {
   background-color: #ebf5fb;
 }
 
-body{
+.body{
   font-size: 15px;
   font-family: sans-serif;
   background-color: #4DC0B5;
@@ -15,21 +15,12 @@ body{
   padding: 0;
 }
 
-input:focus {
+.input:focus {
   background-color: #FAF9E8;
 }
 
-button {
-  color: white;
+.button {
   font-size: 1.2em;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-button:hover {
-  cursor: pointer;
 }
 
 .container {
@@ -119,9 +110,4 @@ button:hover {
   position: absolute;
   top: 0;
   right: 5px;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
