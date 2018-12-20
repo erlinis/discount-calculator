@@ -2,7 +2,7 @@
 
 Given a price and a discount percentage it gives you the sale price.
 
-<img src="images/screenshot.jpg" height="50"/>
+<img src="public/images/screenshot.jpg" height="350"/>
 
 ## Development info
 
