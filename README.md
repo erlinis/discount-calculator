@@ -2,7 +2,7 @@
 
 Given a price and a discount percentage it gives you the sale price.
 
-
+<img src="images/screenshot.jpg" height="50"/>
 
 ## Development info
 
@@ -29,4 +29,4 @@ You will also see any lint errors in the console.
 
 ## Icons
 
-Icons required to be a PWA created using: [https://realfavicongenerator.net/](https://realfavicongenerator.net/)¡
+Icons required to be a PWA created using: [https://realfavicongenerator.net/](https://realfavicongenerator.net/)
