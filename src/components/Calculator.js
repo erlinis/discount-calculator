@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import DataDisplayer from '../components/DataDisplayer';
-import Label from '../components/Label';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import DataDisplayer from '../components/DataDisplayer'
+import Label from '../components/Label'
 
 export default class Calculator extends Component {
   calculateSaving(price, discount) {
-    return price * (discount / 100);
+    return price * (discount / 100)
   }
 
   calculateSalePrice(price, saving) {
-    return price - saving;
+    return price - saving
   }
 
   render() {
-    var price = this.props.price;
-    var discount = this.props.discount;
-    var saving = this.calculateSaving(price, discount);
-    var salePrice = this.calculateSalePrice(price, saving);
+    var price = this.props.price
+    var discount = this.props.discount
+    var saving = this.calculateSaving(price, discount)
+    var salePrice = this.calculateSalePrice(price, saving)
 
     return (
       <div className="mb-4">
@@ -31,7 +31,6 @@ export default class Calculator extends Component {
               min="1"
               max="1000000000000"
               placeholder="0"
-              autoFocus
               ref={this.props.priceInputRef}
               onChange={this.props.onChangeInput}
               value={price}
@@ -99,7 +98,7 @@ export default class Calculator extends Component {
           description={this.props.description}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -108,5 +107,5 @@ Calculator.propTypes = {
   description: PropTypes.string,
   priceInputRef: PropTypes.object,
   onChangeInput: PropTypes.func.isRequired,
-  onAddDiscount: PropTypes.func.isRequired
-};
+  onAddDiscount: PropTypes.func.isRequired,
+}

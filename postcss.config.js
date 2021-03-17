@@ -1,29 +1,13 @@
-const purgecss = require('@fullhuman/postcss-purgecss');
-const cssnano = require('cssnano');
-
-class TailwindExtractor {
-  static extract(content) {
-    return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
-  }
-}
+const cssnano = require('cssnano')
 
 module.exports = {
   plugins: [
+    require('@tailwindcss/jit'),
     require('postcss-import'),
     require('postcss-preset-env'),
     require('tailwindcss')('tailwind.config.js'),
     cssnano({
-      preset: 'default'
+      preset: 'default',
     }),
-    purgecss({
-      content: ['./src/App.js', './src/components/**/*.js', './public/index.html'],
-      extractors: [
-        {
-          extractor: TailwindExtractor,
-          extensions: ['html', 'js'],
-          css: ['./src/index.css']
-        }
-      ]
-    })
-  ]
-};
+  ],
+}
