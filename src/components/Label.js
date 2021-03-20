@@ -1,12 +1,7 @@
-import React from 'react';
-
-export default function Label({ inputFor = '', text }) {
+export default function Label({ inputFor = '', text, className = '' }) {
   return (
-    <label
-      htmlFor={inputFor}
-      className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-    >
-      {text}
+    <label htmlFor={inputFor} className={`label ${className}`}>
+      {text}:
     </label>
-  );
+  )
 }

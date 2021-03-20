@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function AddHomePopup({ onPress }) {
   return (
     <div
@@ -11,12 +9,21 @@ export default function AddHomePopup({ onPress }) {
     >
       <p className="add-home__text">
         Install this app on your iPhone: tap{' '}
-        <svg className="icon">
+        <svg className="icon text-primary">
           <use xlinkHref="#icon-share" />
         </svg>{' '}
-        and then Add to homescreen
+        and then{' '}
+        <span className="text-primary">
+          Add to homescreen{' '}
+          <svg className="icon">
+            <use xlinkHref="#icon-plus-square" />
+          </svg>{' '}
+        </span>
       </p>
-      <span className="add-home__close">&times;</span>
+      <span className="add-home__close text-2xl">&times;</span>
+      <svg className="icon add-home-tip">
+        <use xlinkHref="#icon-triangle" />
+      </svg>
     </div>
-  );
+  )
 }

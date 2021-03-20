@@ -1,52 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { formatNumber } from '../lib/format';
+import PropTypes from 'prop-types'
+import { formatNumber } from '../lib/format'
 
 export default function DataDisplayer({
   saving,
   discount,
   price,
   salePrice,
-  description
+  description,
 }) {
   return (
-    <div className="data-discount-color shadow-md rounded">
-      <div className="flex pt-3 mb-3">
-        <div className="w-1/8">
-          <span className="rounded-r-lg bg-red p-1 pl-2 pr-2 text-md text-white">
-            {' '}
-            {discount} % OFF{' '}
-          </span>
+    <div className="box">
+      <div className="discount-box flex flex-col align-items-center justify-center">
+        <div className="discount-tag">
+          <picture>
+            <source
+              srcset="images/tags/tag-discount-2x.png 2x,
+                     images/tags/tag-discount-3x.png 3x"
+            />
+            <img src="images/tags/tag-discount-1x.png" alt="tag" />
+          </picture>
+
+          <span className="">{discount}</span>
         </div>
 
-        <div className="w-7/8 ml-5">
-          <span className="text-md text-orange-darker uppercase">
-            {description}
-          </span>
-        </div>
-      </div>
-
-      <div className="items-center">
-        <div className="data-discount-color p-3 rounded-sm justify-between">
-          <p className="text-red-light text-md ">
-            {' '}
-            Price: {formatNumber(price)}{' '}
-          </p>
-          <div className="mb-2">
-            <div className="text-teal-darker font-bold text-4xl p-3">
-              {' '}
-              {formatNumber(salePrice)}{' '}
-            </div>
-            <div className="text-sm">
-              <p className="text-grey-dark italic">
-                You save: {formatNumber(saving)}
-              </p>
-            </div>
+        <div className="text-center">
+          <div className="text-secondary text-sm">You will pay:</div>
+          <div className="sale-price">{formatNumber(salePrice)} </div>
+          <div className="text-light text-sm">
+            You save: {formatNumber(saving)}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 DataDisplayer.propTypes = {
@@ -54,5 +40,5 @@ DataDisplayer.propTypes = {
   discount: PropTypes.string.isRequired,
   saving: PropTypes.number.isRequired,
   salePrice: PropTypes.number.isRequired,
-  description: PropTypes.string
-};
+  description: PropTypes.string,
+}

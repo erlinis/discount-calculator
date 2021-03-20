@@ -1,54 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Label from '../components/Label';
-import sum from '../lib/sum';
-import map from '../lib/map';
-import compose from '../lib/compose';
-import { formatNumber } from '../lib/format';
+import PropTypes from 'prop-types'
+import Label from '../components/Label'
+import sum from '../lib/sum'
+import map from '../lib/map'
+import compose from '../lib/compose'
+import { formatNumber } from '../lib/format'
+import { shouldShowTotal } from '../lib/discountCalculation'
 
-const mapSum = mapperFn =>
-  compose(
-    sum,
-    map(mapperFn)
-  );
+const mapSum = (mapperFn) => compose(sum, map(mapperFn))
 
 function renderRow(row, onDeleteDiscount) {
   return (
-    <div key={row.id}>
-      <div className="bg-white border border-dotted border-grey-light">
-        <div className="flex pt-3 mb-3">
-          <div className="w-1/8">
-            <span className="rounded-r-lg bg-orange p-1 pr-2 text-xs text-white">
-              {' '}
-              {row.discount} % OFF{' '}
-            </span>
+    <article key={row.id} className="box box-ticket relative">
+      <div className="deal-box">
+        <header className="deal-header">
+          <div className="tag">
+            {row.discount}
+            <span> %</span>
           </div>
 
-          <div className="w-7/8 ml-5">
-            <span className="text-sm text-orange-darker uppercase">
-              {row.description}
-            </span>
-          </div>
-        </div>
+          <div className="title">{row.description}</div>
 
-        <div className="flex justify-start text-sm pt-2">
-          <div className="w-1/3">
-            <Label text="Price" />
-            <div className="text-red-light"> {formatNumber(row.price)} </div>
-          </div>
-          <div className="w-1/3">
-            <Label text="Saving" />
-            <div className="text-teal-dark">{formatNumber(row.saving)}</div>
-          </div>
-          <div className="w-1/3">
-            <Label text="Sale Price" />
-            <div className="text-teal-darker font-bold text-md">
-              {formatNumber(row.salePrice)}
-            </div>
-          </div>
-          <div className="w-1/4 p-2">
+          <div>
             <button
-              className="button hover:text-grey-darker font-semibold text-orange-dark"
+              className="icon-button"
               onClick={() => onDeleteDiscount(row.id)}
             >
               <svg className="icon">
@@ -58,46 +32,61 @@ function renderRow(row, onDeleteDiscount) {
               </svg>
             </button>
           </div>
+        </header>
+
+        <div className="deal-body grid grid-cols-2">
+          <Label text="Initial Price" className="" />
+          <div className="value-col">$ {formatNumber(row.price)} </div>
+
+          <Label text="Amount Saved" className="text-light" />
+          <div className="value-col text-light">
+            $ {formatNumber(row.saving)}
+          </div>
+        </div>
+        <div className="cutting-line "></div>
+        <div className="deal-total grid grid-cols-2">
+          <Label text="Sale Price" className="inline-grid items-end" />
+          <div className="value-col items-end">
+            $ {formatNumber(row.salePrice)}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    </article>
+  )
 }
 
 function renderTotal(discounts) {
-  var totalPrices = mapSum(item => item.price)(discounts);
-  var totalSaving = mapSum(item => item.saving)(discounts);
-  var totalSalePrices = mapSum(item => item.salePrice)(discounts);
+  var totalPrices = mapSum((item) => item.price)(discounts)
+  var totalSaving = mapSum((item) => item.saving)(discounts)
+  var totalSalePrices = mapSum((item) => item.salePrice)(discounts)
 
   return (
-    <div className="flex justify-end text-base pr-2 pt-3">
-      <div className="flex-col">
-        <div className="text-teal-dark pb-2 text-right">
-          {' '}
-          Grand Total: {formatNumber(totalPrices)}{' '}
+    <div>
+      <div className="total-box grid grid-cols-2">
+        <Label text="Total" className="text-primary font-bold text-2xl " />
+        <div className="value-col text-secondary font-bold text-2xl">
+          $ {formatNumber(totalSalePrices)}
         </div>
-        <div className="text-teal-dark pb-2 text-right">
-          {' '}
-          Savings: {formatNumber(totalSaving)}
-        </div>
-        <div className="text-teal-darker font-bold text-lg pb-2 text-right">
-          Total Due: {formatNumber(totalSalePrices)}
+
+        <Label text="Total Saved" className="text-light text-lg" />
+        <div className="value-col text-light text-lg">
+          $ {formatNumber(totalSaving)}
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default function DiscountList({ discounts, onDeleteDiscount }) {
   return (
-    <div className="data-discount-color shadow-md rounded p-2">
-      {discounts.map(item => renderRow(item, onDeleteDiscount))}
-      {renderTotal(discounts)}
+    <div>
+      {discounts.map((item) => renderRow(item, onDeleteDiscount))}
+      {shouldShowTotal(discounts) ? renderTotal(discounts) : null}
     </div>
-  );
+  )
 }
 
 DiscountList.propTypes = {
   discounts: PropTypes.array.isRequired,
-  onDeleteDiscount: PropTypes.func.isRequired
-};
+  onDeleteDiscount: PropTypes.func.isRequired,
+}

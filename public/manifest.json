@@ -3,7 +3,7 @@
   "name": "Discount Calculator",
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#4DC0B5",
+  "theme_color": "#f25c55",
   "background_color": "#ffffff",
   "icons": [
     {

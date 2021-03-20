@@ -1,128 +1,163 @@
-import React, { Component } from 'react';
-import Calculator from './components/Calculator';
-import DiscountList from './components/DiscountList';
-import AddHomePopup from './components/AddHomePopup';
-import { isIos, isInStandaloneMode } from './lib/appleDeviceDetector';
+import { useEffect, useRef, useState } from 'react'
+import Calculator from './components/Calculator'
+import DiscountList from './components/DiscountList'
+import AddHomePopup from './components/AddHomePopup'
+import { isIos, isInStandaloneMode } from './lib/appleDeviceDetector'
 
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.priceInputRef = React.createRef();
-    this.focusPriceInput = this.focusPriceInput.bind(this);
-
-    this.state = {
-      discounts: this.getDiscountList(),
+function App() {
+  const priceInputRef = useRef()
+  const [state, setState] = useState(() => {
+    return {
+      discounts: getDiscountList(),
       price: '',
       discount: 40,
       description: '',
-      showInstallMessage: this.isAppleDevice() && !this.getInstallMessage()
+      showInstallMessage: isAppleDevice() && !getInstallMessage(),
     }
+  })
+
+  function onChangeInput(event) {
+    var field = event.target
+
+    setState((prevState) => {
+      return {
+        ...prevState,
+        [field.name]: field.value,
+      }
+    })
   }
 
-  getInstallMessage = () => {
-    const item = localStorage.getItem('@discount/installMessage');
-    if(item === 'true') {
-      return true
-    }
-    return false;
-  }
-
-  storeInstallMessage = () => {
-    localStorage.setItem('@discount/installMessage', true);
-  }
-
-  isAppleDevice = () => isIos() && !isInStandaloneMode()
-
-  onChangeInput = (event) => {
-    var field = event.target;
-    /* console.log(`<${field.name}>: `, field;.value); */
-
-    this.setState({ [field.name]: field.value });
-  }
-
-  onAddDiscount = (price, discount, salePrice, saving, description) => {
+  function onAddDiscount(price, discount, salePrice, saving, description) {
     var discountRow = {
       id: Date.now(),
       price: Number(price),
       discount: discount,
       saving: saving,
       salePrice: Number(salePrice),
-      description: description
+      description: description,
     }
 
-    this.setState({
-      discounts: [ discountRow, ...this.state.discounts ],
-      price: '',
-      description: '',
-    }, () => {
-               this.focusPriceInput();
-               this.storeDiscountList();
-             }
-    );
+    setState((prevState) => {
+      return {
+        ...prevState,
+        discounts: [discountRow, ...prevState.discounts],
+        price: '',
+        description: '',
+      }
+    })
+
+    // this.setState(
+    //   {
+    //     discounts: [discountRow, ...this.state.discounts],
+    //     price: '',
+    //     description: '',
+    //   },
+    //   () => {
+    //     this.focusPriceInput()
+    //   }
+    // )
   }
 
-  onDeleteDiscount = (itemId) => {
-    this.setState({
-      discounts: this.state.discounts.filter(item => item.id !== itemId)
-    }, () => {
-               this.focusPriceInput();
-               this.storeDiscountList();
-             }
-    );
+  function onDeleteDiscount(itemId) {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        discounts: prevState.discounts.filter((item) => item.id !== itemId),
+      }
+    })
+
+    // this.setState(
+    //   {
+    //     discounts: this.state.discounts.filter((item) => item.id !== itemId),
+    //   },
+    //   () => {
+    //     this.focusPriceInput()
+    //   }
+    // )
   }
 
-  focusPriceInput() {
+  var discounts = state.discounts
+
+  useEffect(() => {
+    storeDiscountList(discounts)
+  }, [discounts])
+
+  function focusPriceInput() {
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
-    this.priceInputRef.current.focus();
+    priceInputRef.current.focus()
   }
 
-  storeDiscountList() {
-    localStorage.setItem('@discount/discountList', JSON.stringify(this.state.discounts));
-  }
-
-  getDiscountList() {
-    try{
-      return JSON.parse(localStorage.getItem('@discount/discountList') || []);
-    } catch (e) {
-      return [];
-    }
-  }
-
-  onPopupPress = (e) => {
-    this.setState({
-      showInstallMessage: false
-    }, () => {
-      this.storeInstallMessage();
+  function onPopupPress(e) {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        showInstallMessage: false,
+      }
     })
   }
 
-  render() {
-    return (
-      <>
-        <header className="App-header flex items-center justify-center">
-          <h1 className="App-title">Discount Calculator</h1>
-        </header>
-        <div className="App-body">
-          <div className="container">
+  useEffect(() => {
+    if (state.showInstallMessage === false) {
+      storeInstallMessage()
+    }
+  })
+
+  return (
+    <>
+      <header className="banner">
+        <img className="logo" src="images/logo-250x250.png" alt="logo" />
+        <h1 className="text-2xl font-bold">Discount Calculator</h1>
+      </header>
+      <div className="container-wrapper">
+        <div className="">
           <Calculator
-            price={this.state.price}
-            description={this.state.description}
-            priceInputRef={this.priceInputRef}
-            discount={this.state.discount}
-            onAddDiscount={this.onAddDiscount}
-            onChangeInput={this.onChangeInput}/>
+            price={state.price}
+            description={state.description}
+            priceInputRef={priceInputRef}
+            discount={state.discount}
+            onAddDiscount={onAddDiscount}
+            onChangeInput={onChangeInput}
+          />
           <DiscountList
-            discounts={this.state.discounts}
-            onDeleteDiscount={this.onDeleteDiscount}/>
-          </div>
-          {
-            this.state.showInstallMessage ? <AddHomePopup onPress={this.onPopupPress} /> : null
-          }
+            discounts={state.discounts}
+            onDeleteDiscount={onDeleteDiscount}
+          />
         </div>
-      </>
-    );
+        {state.showInstallMessage ? (
+          <AddHomePopup onPress={onPopupPress} />
+        ) : null}
+      </div>
+    </>
+  )
+}
+
+function getInstallMessage() {
+  const item = localStorage.getItem('@discount/installMessage')
+  if (item === 'true') {
+    return true
+  }
+  return false
+}
+
+function storeInstallMessage() {
+  localStorage.setItem('@discount/installMessage', true)
+}
+
+function isAppleDevice() {
+  return isIos() && !isInStandaloneMode()
+}
+
+function storeDiscountList(discounts) {
+  localStorage.setItem('@discount/discountList', JSON.stringify(discounts))
+}
+
+function getDiscountList() {
+  try {
+    return JSON.parse(localStorage.getItem('@discount/discountList') || [])
+  } catch (e) {
+    return []
   }
 }
 
-export default App;
+export default App

@@ -9,14 +9,13 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3",
-    "tailwindcss": "^2.0.3"
+    "tailwindcss": "^2.0.4"
   },
   "scripts": {
     "build:css": "postcss src/styles/index.css -o src/index.css",
-    "normalize:css": "tailwind build src/styles/normalize.src.css -c tailwind.config.js -o src/normalize.css",
-    "watch:css": "npm run build:css -- --watch",
-    "start": "npm run normalize:css && npm run watch:css & react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "watch:css": "yarn build:css -w",
+    "start": "NODE_ENV=development concurrently \"yarn watch:css\" \"react-scripts start\"",
+    "build": "NODE_ENV=production yarn build:css && react-scripts build",
     "postbuild": "surge ./build --domain https://discount-calculator.surge.sh/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -26,13 +25,16 @@
     "@fullhuman/postcss-purgecss": "^4.0.2",
     "@tailwindcss/jit": "^0.1.3",
     "autoprefixer": "^10.2.5",
+    "concurrently": "^6.0.0",
     "cssnano": "^4.1.7",
     "eslint-plugin-jsx-a11y": "^6.1.2",
+    "postcss": "^8.2.8",
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.0",
     "postcss-preset-env": "^6.5.0",
     "postcss-uncss": "^0.17.0",
     "source-map-explorer": "^2.5.2",
+    "surge": "^0.22.1",
     "uncss": "^0.17.3"
   },
   "browserslist": [
