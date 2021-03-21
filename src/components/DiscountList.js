@@ -35,18 +35,20 @@ function renderRow(row, onDeleteDiscount) {
         </header>
 
         <div className="deal-body grid grid-cols-2">
-          <Label text="Initial Price" className="" />
-          <div className="value-col">$ {formatNumber(row.price)} </div>
+          <Label text="Initial Price" className="text-secondary" />
+          <div className="value-col text-secondary">
+            $ {formatNumber(row.price)}{' '}
+          </div>
 
-          <Label text="Amount Saved" className="text-light" />
-          <div className="value-col text-light">
+          <Label text="Amount Saved" className="text-light text-sm" />
+          <div className="value-col text-light text-sm">
             $ {formatNumber(row.saving)}
           </div>
         </div>
         <div className="cutting-line "></div>
         <div className="deal-total grid grid-cols-2">
           <Label text="Sale Price" className="inline-grid items-end" />
-          <div className="value-col items-end">
+          <div className="value-col items-end text-primary">
             $ {formatNumber(row.salePrice)}
           </div>
         </div>

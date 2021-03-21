@@ -428,19 +428,11 @@ video {
   margin: 0 0 1rem 0rem;
   border-radius: 15px;
   box-shadow: var(--general-shadow);
-}.text-primary {
-  color: var(--primary-color);
-}.text-secondary {
-  color: var(--secondary-color);
-}.text-medium {
-  color: var(--medium-color);
-}.text-light {
-  color: var(--medium-color);
-}.value-col {
-  text-align: end;
 }.label {
   color: var(--third-color);
   margin-bottom: 0.2rem;
+}.value-col {
+  text-align: end;
 }.input {
   background-color: var(--light-color);
   color: var(--secondary-color);
@@ -456,7 +448,7 @@ video {
   background-color: var(--medium-color);
 }.button {
   background-color: var(--primary-color);
-  color: var(--light-color);
+  color: var(--lightest-color);
   font-size: 1rem;
   font-weight: bold;
   width: 100%;
@@ -498,9 +490,15 @@ video {
   color: var(--secondary-color);
 }.icon-button:focus {
   outline: 1px dashed var(--medium-color);
+}.text-primary {
+  color: var(--primary-color);
+}.text-secondary {
+  color: var(--secondary-color);
+}.text-light {
+  color: var(--medium-color);
 }/* Banner */.banner {
   background-color: var(--primary-color);
-  color: var(--light-color);
+  color: var(--lightest-color);
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: center;
@@ -569,7 +567,7 @@ video {
   margin-bottom: 0;
 }.deal-total .value-col {
   color: var(--primary-color);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }.cutting-line {
   position: relative;
   border-bottom: 2px dashed var(--light-color);

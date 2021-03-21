@@ -43,29 +43,13 @@
   box-shadow: var(--general-shadow);
 }
 
-.text-primary {
-  color: var(--primary-color);
-}
-
-.text-secondary {
-  color: var(--secondary-color);
-}
-
-.text-medium {
-  color: var(--medium-color);
-}
-
-.text-light {
-  color: var(--medium-color);
+.label {
+  color: var(--third-color);
+  margin-bottom: 0.2rem;
 }
 
 .value-col {
   text-align: end;
-}
-
-.label {
-  color: var(--third-color);
-  margin-bottom: 0.2rem;
 }
 
 .input {
@@ -87,7 +71,7 @@
 
 .button {
   background-color: var(--primary-color);
-  color: var(--light-color);
+  color: var(--lightest-color);
   font-size: 1rem;
   font-weight: bold;
   width: 100%;
@@ -149,10 +133,22 @@
   outline: 1px dashed var(--medium-color);
 }
 
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-light {
+  color: var(--medium-color);
+}
+
 /* Banner */
 .banner {
   background-color: var(--primary-color);
-  color: var(--light-color);
+  color: var(--lightest-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -249,7 +245,7 @@
 
 .deal-total .value-col {
   color: var(--primary-color);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .cutting-line {
