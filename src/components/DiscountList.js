@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import DiscountItem from '../components/DiscountItem'
 import Label from '../components/Label'
 import sum from '../lib/sum'
 import map from '../lib/map'
@@ -8,57 +9,7 @@ import { shouldShowTotal } from '../lib/discountCalculation'
 
 const mapSum = (mapperFn) => compose(sum, map(mapperFn))
 
-function renderRow(row, onDeleteDiscount) {
-  return (
-    <article key={row.id} className="box relative">
-      <div className="discount-item__box">
-        <header className="discount-item__header">
-          <div className="tag">
-            {row.discount}
-            <span> %</span>
-          </div>
-
-          <div className="title">{row.description}</div>
-
-          <div>
-            <button
-              className="icon-button"
-              onClick={() => onDeleteDiscount(row.id)}
-            >
-              <svg className="icon">
-                <use xlinkHref="#icon-bin">
-                  <title>Remove</title>
-                </use>
-              </svg>
-            </button>
-          </div>
-        </header>
-
-        <div className="discount-item__body grid grid-cols-2">
-          <Label text="Initial Price" className="text-secondary" />
-          <div className="value-col text-secondary">
-            $ {formatNumber(row.price)}{' '}
-          </div>
-
-          <Label text="Amount Saved" className="text-light text-sm" />
-          <div className="value-col text-light text-sm">
-            $ {formatNumber(row.saving)}
-          </div>
-        </div>
-        <div className="cutting-line "></div>
-        <div className="discount-item__total grid grid-cols-2">
-          <Label text="Sale Price" className="inline-grid items-end" />
-          <div className="value-col items-end text-primary">
-            $ {formatNumber(row.salePrice)}
-          </div>
-        </div>
-      </div>
-    </article>
-  )
-}
-
 function renderTotal(discounts) {
-  var totalPrices = mapSum((item) => item.price)(discounts)
   var totalSaving = mapSum((item) => item.saving)(discounts)
   var totalSalePrices = mapSum((item) => item.salePrice)(discounts)
 
@@ -82,7 +33,13 @@ function renderTotal(discounts) {
 export default function DiscountList({ discounts, onDeleteDiscount }) {
   return (
     <div>
-      {discounts.map((item) => renderRow(item, onDeleteDiscount))}
+      {discounts.map((item) => (
+        <DiscountItem
+          key={item.id}
+          discountItem={item}
+          onDeleteDiscount={onDeleteDiscount}
+        />
+      ))}
       {shouldShowTotal(discounts) ? renderTotal(discounts) : null}
     </div>
   )
