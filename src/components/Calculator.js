@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import DataDisplayer from '../components/DataDisplayer'
+import Displayer from '../components/Displayer'
 import Label from '../components/Label'
 import { calculateSalePrice, calculateSaving } from '../lib/discountCalculation'
 
@@ -79,7 +79,7 @@ export default function Calculator({
         </form>
       </div>
 
-      <DataDisplayer
+      <Displayer
         salePrice={salePrice}
         price={price.toString()}
         discount={discount.toString()}

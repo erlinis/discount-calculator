@@ -175,12 +175,12 @@ html,
 
 /* Discount Box */
 
-.discount-box {
+.diplayer__box {
   position: relative;
   height: 100%;
 }
 
-.discount-box .discount-tag img {
+.diplayer__box .diplayer__tag img {
   position: absolute;
   display: block;
   top: 0;
@@ -189,7 +189,7 @@ html,
   height: 35px;
 }
 
-.discount-box .discount-tag span {
+.diplayer__box .diplayer__tag span {
   position: absolute;
   display: block;
   font-size: 0.7rem;
@@ -200,20 +200,20 @@ html,
   text-align: center;
 }
 
-.discount-box .sale-price {
+.diplayer__box .sale-price {
   font-size: 2rem;
   font-weight: bold;
   color: var(--secondary-color);
 }
 
-/* Deal Box */
+/* Discount Item  */
 
-.deal-header {
+.discount-item__header {
   display: flex;
   justify-content: space-between;
 }
 
-.deal-header .tag {
+.discount-item__header .tag {
   background-color: var(--secondary-color);
   color: var(--lightest-color);
   position: absolute;
@@ -222,32 +222,32 @@ html,
   border-radius: 0 0 15px 15px;
 }
 
-.deal-header .tag span {
+.discount-item__header .tag span {
   font-size: 0.7rem;
 }
 
-.deal-header .title {
+.discount-item__header .title {
   color: var(--primary-color);
   width: 70%;
   padding-left: 80px;
 }
 
-.deal-body {
+.discount-item__body {
   padding-top: 1rem;
 }
 
-.deal-total {
+.discount-item__total {
   font-weight: bold;
   padding: 0.5rem 0 0 0;
 }
 
-.deal-total label {
+.discount-item__total label {
   color: var(--secondary-color);
   font-size: 1rem;
   margin-bottom: 0;
 }
 
-.deal-total .value-col {
+.discount-item__total .value-col {
   color: var(--primary-color);
   font-size: 1.2rem;
 }

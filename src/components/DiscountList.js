@@ -10,9 +10,9 @@ const mapSum = (mapperFn) => compose(sum, map(mapperFn))
 
 function renderRow(row, onDeleteDiscount) {
   return (
-    <article key={row.id} className="box box-ticket relative">
-      <div className="deal-box">
-        <header className="deal-header">
+    <article key={row.id} className="box relative">
+      <div className="discount-item__box">
+        <header className="discount-item__header">
           <div className="tag">
             {row.discount}
             <span> %</span>
@@ -34,7 +34,7 @@ function renderRow(row, onDeleteDiscount) {
           </div>
         </header>
 
-        <div className="deal-body grid grid-cols-2">
+        <div className="discount-item__body grid grid-cols-2">
           <Label text="Initial Price" className="text-secondary" />
           <div className="value-col text-secondary">
             $ {formatNumber(row.price)}{' '}
@@ -46,7 +46,7 @@ function renderRow(row, onDeleteDiscount) {
           </div>
         </div>
         <div className="cutting-line "></div>
-        <div className="deal-total grid grid-cols-2">
+        <div className="discount-item__total grid grid-cols-2">
           <Label text="Sale Price" className="inline-grid items-end" />
           <div className="value-col items-end text-primary">
             $ {formatNumber(row.salePrice)}

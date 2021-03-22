@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { formatNumber } from '../lib/format'
 
-export default function DataDisplayer({
+export default function Displayer({
   saving,
   discount,
   price,
@@ -10,8 +10,8 @@ export default function DataDisplayer({
 }) {
   return (
     <div className="box">
-      <div className="discount-box flex flex-col align-items-center justify-center">
-        <div className="discount-tag">
+      <div className="diplayer__box flex flex-col align-items-center justify-center">
+        <div className="diplayer__tag">
           <picture>
             <source srcset="images/tags/discount-tag-2x.png 2x, images/tags/discount-tag-3x.png 3x" />
             <img
@@ -39,7 +39,7 @@ export default function DataDisplayer({
   )
 }
 
-DataDisplayer.propTypes = {
+Displayer.propTypes = {
   price: PropTypes.string.isRequired,
   discount: PropTypes.string.isRequired,
   saving: PropTypes.number.isRequired,
