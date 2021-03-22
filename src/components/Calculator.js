@@ -24,7 +24,7 @@ export default function Calculator({
             onAddDiscount(price, discount, salePrice, saving, description)
           }}
         >
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
               <Label inputFor="description" text="Description" />
               <input

@@ -383,8 +383,8 @@ video {
 }.justify-center {
 	-webkit-justify-content: center;
 	        justify-content: center;
-}.gap-6 {
-	gap: 1.5rem;
+}.gap-4 {
+	gap: 1rem;
 }.text-center {
 	text-align: center;
 }.text-2xl {
@@ -405,16 +405,17 @@ video {
 }:root {
   --primary-color: #f25c55;
   --secondary-color: hsl(243, 42%, 25%);
-  --third-color: #75759e;
-  --medium-color: #c8c8d3;
+  --third-color: #5c5c7d;
+  --medium-color: #9999ac;
   --light-color: #f0f1f5;
   --lightest-color: #ffffff;
   --app-width: 800px;
   --general-shadow: rgb(63 65 68 / 30%) 0px 1px 5px 0px;
-}.html,
-.body,
+}html,
 #root {
-  background-color: #fff;
+  background-color: var(--lightest-color);
+}.body {
+  background-color: var(--primary-color);
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }/* Utilities */.container-wrapper {
@@ -509,7 +510,7 @@ video {
   margin-bottom: 1rem;
 }.banner .logo {
   width: 50px;
-  height: 45px;
+  height: 32px;
   margin-right: 0.5rem;
 }/* Calculation Panel (Form and Discount Box) */.calculation-panel {
   display: grid;
@@ -521,19 +522,19 @@ video {
 }.discount-box .discount-tag img {
   position: absolute;
   display: block;
-  top: -1rem;
-  width: 64px;
-  height: 60px;
+  top: 0;
+  right: 0;
+  width: 67px;
+  height: 35px;
 }.discount-box .discount-tag span {
   position: absolute;
   display: block;
-  font-size: 0.8rem;
-  top: 6px;
-  left: 5px;
-  width: 28px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  top: 10px;
+  right: 13px;
+  width: 35px;
   text-align: center;
-  -webkit-transform: rotate(15deg);
-          transform: rotate(15deg);
 }.discount-box .sale-price {
   font-size: 2rem;
   font-weight: bold;

@@ -13,14 +13,18 @@ export default function DataDisplayer({
       <div className="discount-box flex flex-col align-items-center justify-center">
         <div className="discount-tag">
           <picture>
-            <source
-              srcset="images/tags/tag-discount-2x.png 2x,
-                     images/tags/tag-discount-3x.png 3x"
+            <source srcset="images/tags/discount-tag-2x.png 2x, images/tags/discount-tag-3x.png 3x" />
+            <img
+              src="images/tags/discount-tag-1x.png"
+              alt="tag"
+              width="67"
+              height="35"
             />
-            <img src="images/tags/tag-discount-1x.png" alt="tag" />
           </picture>
 
-          <span className="">{discount}</span>
+          <span className="text-primary">
+            {discount} <small>%</small>
+          </span>
         </div>
 
         <div className="text-center">

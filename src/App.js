@@ -106,7 +106,15 @@ function App() {
   return (
     <>
       <header className="banner">
-        <img className="logo" src="images/logo-250x250.png" alt="logo" />
+        <picture className="logo">
+          <source srcset="images/logo/ticket-logo-2x.png 2x, images/logo/ticket-logo-3x.png 3x" />
+          <img
+            src="images/logo/ticket-logo-1x.png"
+            alt="logo"
+            width="50"
+            height="32"
+          />
+        </picture>
         <h1 className="text-2xl font-bold">Discount Calculator</h1>
       </header>
       <div className="container-wrapper">
