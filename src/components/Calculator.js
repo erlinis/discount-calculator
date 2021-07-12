@@ -47,8 +47,9 @@ export default function Calculator({
                 name="price"
                 min="1"
                 max="1000000000000"
+                step="0.001"
                 required
-                placeholder="0"
+                placeholder="0.00"
                 ref={priceInputRef}
                 onChange={onChangeInput}
                 value={price}
@@ -62,7 +63,7 @@ export default function Calculator({
                 type="number"
                 id="discount"
                 name="discount"
-                min="1"
+                min="0"
                 max="100"
                 required
                 onChange={onChangeInput}
