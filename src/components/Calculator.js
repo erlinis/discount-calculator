@@ -45,7 +45,7 @@ export default function Calculator({
                 type="number"
                 id="price"
                 name="price"
-                min="1"
+                min="0.1"
                 max="1000000000000"
                 step="0.001"
                 required
