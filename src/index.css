@@ -452,7 +452,7 @@ video {
   font-weight: 600;
 }/* Utilities */.container-wrapper {
   max-width: var(--app-width);
-  padding: 0 1rem;
+  padding: 0 1rem 2rem 1rem;
   margin: auto;
 }.box {
   background: var(--lightest-color);

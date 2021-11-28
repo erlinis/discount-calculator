@@ -16,14 +16,19 @@ function renderTotal(discounts) {
   return (
     <div>
       <div className="total-box grid grid-cols-2">
-        <Label text="Total" className="text-primary font-bold text-2xl " />
-        <div className="value-col text-secondary font-bold text-2xl">
-          $ {formatNumber(totalSalePrices)}
+        <Label text="Total" className="text-secondary text-lg" />
+        <div className="value-col text-secondary text-lg">
+          $ {formatNumber(totalSalePrices + totalSaving)}
         </div>
 
-        <Label text="Total Saved" className="text-light text-lg" />
+        <Label text="(-) Discounts" className="text-secondary text-lg" />
         <div className="value-col text-light text-lg">
           $ {formatNumber(totalSaving)}
+        </div>
+
+        <Label text="Total to pay" className="text-secondary text-2xl" />
+        <div className="value-col text-primary text-2xl">
+          $ {formatNumber(totalSalePrices)}
         </div>
       </div>
     </div>
