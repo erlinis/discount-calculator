@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Label from '../components/Label';
-import { formatNumber } from '../lib/format';
+import { formatNumber, formatPrice } from '../lib/format';
 
 export default function DiscountItem({ discountItem, onDeleteDiscount }) {
   return (
@@ -33,19 +33,24 @@ export default function DiscountItem({ discountItem, onDeleteDiscount }) {
         <div className="discount-item__body grid grid-cols-2">
           <Label text="Initial Price" className="text-secondary" />
           <div className="value-col text-secondary">
-            $ {formatNumber(discountItem.price)}{' '}
+            {discountItem.amount > 1 ? (
+              <span className="text-xs text-gray-500">
+                ({formatPrice(discountItem.price)} × {discountItem.amount})
+              </span>
+            ) : null}{' '}
+            {formatPrice(discountItem.price * discountItem.amount)}
           </div>
 
           <Label text="Amount Saved" className="text-light text-sm" />
           <div className="value-col text-light text-sm">
-            $ {formatNumber(discountItem.saving)}
+            {formatPrice(discountItem.saving)}
           </div>
         </div>
         <div className="cutting-line "></div>
         <div className="discount-item__total grid grid-cols-2">
           <Label text="Sale Price" className="inline-grid items-end" />
           <div className="value-col items-end text-primary">
-            $ {formatNumber(discountItem.salePrice)}
+            {formatPrice(discountItem.salePrice)}
           </div>
         </div>
       </div>
