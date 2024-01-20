@@ -8,6 +8,16 @@
   box-sizing: border-box;
 }
 
+@layer base {
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number'] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+  }
+}
+
 :root {
   --primary-color: #f25c55;
   --secondary-color: hsl(243, 42%, 25%);

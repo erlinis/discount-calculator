@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
-import Label from '../components/Label'
-import { formatNumber } from '../lib/format'
+import PropTypes from 'prop-types';
+import Label from '../components/Label';
+import { formatNumber } from '../lib/format';
 
 export default function DiscountItem({ discountItem, onDeleteDiscount }) {
   return (
@@ -12,7 +12,9 @@ export default function DiscountItem({ discountItem, onDeleteDiscount }) {
             <span> %</span>
           </div>
 
-          <div className="title">{discountItem.description}</div>
+          <div className="title">
+            {discountItem.description} &#215; {discountItem.amount}
+          </div>
 
           <div>
             <button
@@ -48,10 +50,10 @@ export default function DiscountItem({ discountItem, onDeleteDiscount }) {
         </div>
       </div>
     </article>
-  )
+  );
 }
 
 DiscountItem.propTypes = {
   discountItem: PropTypes.object.isRequired,
   onDeleteDiscount: PropTypes.func.isRequired,
-}
+};

@@ -1,11 +1,19 @@
 export function calculateSaving(price, discount) {
-  return price * (discount / 100)
+  return price * (discount / 100);
 }
 
-export function calculateSalePrice(price, saving) {
-  return price - saving
+/**
+ *
+ * @param {number} price Item unit price
+ * @param {number} amount Amount of items
+ * @param {number} saving percentage of discount
+ * @returns
+ */
+export function calculateSalePrice(price, amount, saving) {
+  const a = amount <= 0 ? 1 : amount;
+  return price * a - saving;
 }
 
 export function shouldShowTotal(discounts) {
-  return discounts.length > 1
+  return discounts.length > 1;
 }
