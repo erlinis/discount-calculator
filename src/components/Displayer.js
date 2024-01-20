@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import { formatNumber } from '../lib/format'
+import PropTypes from 'prop-types';
+import { formatNumber } from '../lib/format';
 
 export default function Displayer({
   saving,
@@ -13,7 +13,7 @@ export default function Displayer({
       <div className="diplayer__box flex flex-col align-items-center justify-center">
         <div className="diplayer__tag">
           <picture>
-            <source srcset="images/tags/discount-tag-2x.png 2x, images/tags/discount-tag-3x.png 3x" />
+            <source srcSet="images/tags/discount-tag-2x.png 2x, images/tags/discount-tag-3x.png 3x" />
             <img
               src="images/tags/discount-tag-1x.png"
               alt="tag"
@@ -36,7 +36,7 @@ export default function Displayer({
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 Displayer.propTypes = {
@@ -45,4 +45,4 @@ Displayer.propTypes = {
   saving: PropTypes.number.isRequired,
   salePrice: PropTypes.number.isRequired,
   description: PropTypes.string,
-}
+};

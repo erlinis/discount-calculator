@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
-import Calculator from './components/Calculator'
-import DiscountList from './components/DiscountList'
-import AddHomePopup from './components/AddHomePopup'
-import { isIos, isInStandaloneMode } from './lib/appleDeviceDetector'
+import { useEffect, useRef, useState } from 'react';
+import AddHomePopup from './components/AddHomePopup';
+import Calculator from './components/Calculator';
+import DiscountList from './components/DiscountList';
+import { isInStandaloneMode, isIos } from './lib/appleDeviceDetector';
 
 function App() {
-  const priceInputRef = useRef()
+  const priceInputRef = useRef();
   const [state, setState] = useState(() => {
     return {
       discounts: getDiscountList(),
@@ -13,18 +13,18 @@ function App() {
       discount: 40,
       description: '',
       showInstallMessage: isAppleDevice() && !getInstallMessage(),
-    }
-  })
+    };
+  });
 
   function onChangeInput(event) {
-    var field = event.target
+    var field = event.target;
 
     setState((prevState) => {
       return {
         ...prevState,
         [field.name]: field.value,
-      }
-    })
+      };
+    });
   }
 
   function onAddDiscount(price, discount, salePrice, saving, description) {
@@ -35,7 +35,7 @@ function App() {
       saving: saving,
       salePrice: Number(salePrice),
       description: description,
-    }
+    };
 
     setState((prevState) => {
       return {
@@ -43,8 +43,8 @@ function App() {
         discounts: [discountRow, ...prevState.discounts],
         price: '',
         description: '',
-      }
-    })
+      };
+    });
 
     // this.setState(
     //   {
@@ -63,8 +63,8 @@ function App() {
       return {
         ...prevState,
         discounts: prevState.discounts.filter((item) => item.id !== itemId),
-      }
-    })
+      };
+    });
 
     // this.setState(
     //   {
@@ -76,16 +76,16 @@ function App() {
     // )
   }
 
-  var discounts = state.discounts
+  var discounts = state.discounts;
 
   useEffect(() => {
-    storeDiscountList(discounts)
-  }, [discounts])
+    storeDiscountList(discounts);
+  }, [discounts]);
 
   function focusPriceInput() {
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
-    priceInputRef.current.focus()
+    priceInputRef.current.focus();
   }
 
   function onPopupPress(e) {
@@ -93,21 +93,21 @@ function App() {
       return {
         ...prevState,
         showInstallMessage: false,
-      }
-    })
+      };
+    });
   }
 
   useEffect(() => {
     if (state.showInstallMessage === false) {
-      storeInstallMessage()
+      storeInstallMessage();
     }
-  })
+  });
 
   return (
     <>
       <header className="banner">
         <picture className="logo">
-          <source srcset="images/logo/ticket-logo-2x.png 2x, images/logo/ticket-logo-3x.png 3x" />
+          <source srcSet="images/logo/ticket-logo-2x.png 2x, images/logo/ticket-logo-3x.png 3x" />
           <img
             src="images/logo/ticket-logo-1x.png"
             alt="logo"
@@ -137,35 +137,35 @@ function App() {
         ) : null}
       </div>
     </>
-  )
+  );
 }
 
 function getInstallMessage() {
-  const item = localStorage.getItem('@discount/installMessage')
+  const item = localStorage.getItem('@discount/installMessage');
   if (item === 'true') {
-    return true
+    return true;
   }
-  return false
+  return false;
 }
 
 function storeInstallMessage() {
-  localStorage.setItem('@discount/installMessage', true)
+  localStorage.setItem('@discount/installMessage', true);
 }
 
 function isAppleDevice() {
-  return isIos() && !isInStandaloneMode()
+  return isIos() && !isInStandaloneMode();
 }
 
 function storeDiscountList(discounts) {
-  localStorage.setItem('@discount/discountList', JSON.stringify(discounts))
+  localStorage.setItem('@discount/discountList', JSON.stringify(discounts));
 }
 
 function getDiscountList() {
   try {
-    return JSON.parse(localStorage.getItem('@discount/discountList') || [])
+    return JSON.parse(localStorage.getItem('@discount/discountList') || []);
   } catch (e) {
-    return []
+    return [];
   }
 }
 
-export default App
+export default App;
