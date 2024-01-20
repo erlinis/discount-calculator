@@ -34,7 +34,6 @@ export default function Calculator({ priceInputRef, onAddDiscount }) {
           action=""
           onSubmit={(e) => {
             e.preventDefault();
-            setState(initialState);
             onAddDiscount(
               price,
               amount,
@@ -43,6 +42,13 @@ export default function Calculator({ priceInputRef, onAddDiscount }) {
               saving,
               description
             );
+            setState((initial) => {
+              return {
+                ...initial,
+                price: '',
+                description: '',
+              };
+            });
           }}
         >
           <div className="grid grid-cols-4 gap-3">
