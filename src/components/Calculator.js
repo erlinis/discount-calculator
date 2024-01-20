@@ -1,18 +1,31 @@
-import PropTypes from 'prop-types'
-import Displayer from '../components/Displayer'
-import Label from '../components/Label'
-import { calculateSalePrice, calculateSaving } from '../lib/discountCalculation'
+import PropTypes from 'prop-types';
+import { useCallback, useState } from 'react';
+import Displayer from '../components/Displayer';
+import Label from '../components/Label';
+import {
+  calculateSalePrice,
+  calculateSaving,
+} from '../lib/discountCalculation';
 
-export default function Calculator({
-  price,
-  discount,
-  description,
-  priceInputRef,
-  onChangeInput,
-  onAddDiscount,
-}) {
-  var saving = calculateSaving(price, discount)
-  var salePrice = calculateSalePrice(price, saving)
+const initialState = { price: '', discount: 5, amount: 1, description: '' };
+
+export default function Calculator({ priceInputRef, onAddDiscount }) {
+  const [{ price, discount, description, amount }, setState] = useState(() => {
+    return initialState;
+  });
+  var saving = calculateSaving(price, discount);
+  var salePrice = calculateSalePrice(price, amount, saving);
+
+  const onChangeInput = useCallback(function onChangeInput(event) {
+    var field = event.target;
+
+    setState((prevState) => {
+      return {
+        ...prevState,
+        [field.name]: field.value,
+      };
+    });
+  }, []);
 
   return (
     <div className="calculation-panel">
@@ -20,12 +33,20 @@ export default function Calculator({
         <form
           action=""
           onSubmit={(e) => {
-            e.preventDefault()
-            onAddDiscount(price, discount, salePrice, saving, description)
+            e.preventDefault();
+            setState(initialState);
+            onAddDiscount(
+              price,
+              amount,
+              discount,
+              salePrice,
+              saving,
+              description
+            );
           }}
         >
-          <div className="grid grid-cols-2 gap-4">
-            <div className="col-span-2">
+          <div className="grid grid-cols-4 gap-3">
+            <div className="col-span-3">
               <Label inputFor="description" text="Description" />
               <input
                 className="input"
@@ -39,39 +60,57 @@ export default function Calculator({
             </div>
 
             <div>
-              <Label inputFor="price" text="Price" />
+              <Label inputFor="amount" text="Units" />
               <input
                 className="input"
+                placeholder="1"
                 type="number"
-                id="price"
-                name="price"
-                min="0.1"
-                max="1000000000000"
-                step="0.001"
-                required
-                placeholder="0.00"
-                ref={priceInputRef}
-                onChange={onChangeInput}
-                value={price}
-              />
-            </div>
-
-            <div>
-              <Label inputFor="discount" text="Discount %" />
-              <input
-                className="input"
-                type="number"
-                id="discount"
-                name="discount"
+                id="amount"
+                name="amount"
                 min="0"
                 max="100"
                 required
                 onChange={onChangeInput}
-                value={discount}
+                value={amount}
               />
             </div>
 
-            <div className="col-span-2">
+            <div className="grid grid-cols-5 gap-3 col-span-4">
+              <div className="col-span-3">
+                <Label inputFor="price" text="Price" />
+                <input
+                  className="input"
+                  type="number"
+                  id="price"
+                  name="price"
+                  min="0.1"
+                  max="1000000000000"
+                  step="0.001"
+                  required
+                  placeholder="0.00"
+                  ref={priceInputRef}
+                  onChange={onChangeInput}
+                  value={price}
+                />
+              </div>
+
+              <div className="col-span-2">
+                <Label inputFor="discount" text="Discount %" />
+                <input
+                  className="input"
+                  type="number"
+                  id="discount"
+                  name="discount"
+                  min="0"
+                  max="100"
+                  required
+                  onChange={onChangeInput}
+                  value={discount}
+                />
+              </div>
+            </div>
+
+            <div className="col-span-4">
               <button className="button" type="submit">
                 Save
               </button>
@@ -88,13 +127,10 @@ export default function Calculator({
         description={description}
       />
     </div>
-  )
+  );
 }
 
 Calculator.propTypes = {
-  price: PropTypes.string,
-  description: PropTypes.string,
   priceInputRef: PropTypes.object,
-  onChangeInput: PropTypes.func.isRequired,
   onAddDiscount: PropTypes.func.isRequired,
-}
+};

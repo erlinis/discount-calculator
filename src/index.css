@@ -249,7 +249,13 @@ video {
   height: auto;
 }/* Make elements with the HTML hidden attribute stay hidden by default */[hidden] {
   display: none;
-}*, ::before, ::after {
+}input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number'] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+  }*, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -366,6 +372,12 @@ video {
   position: relative;
 }.col-span-2 {
   grid-column: span 2 / span 2;
+}.col-span-3 {
+  grid-column: span 3 / span 3;
+}.col-span-4 {
+  grid-column: span 4 / span 4;
+}.col-span-1 {
+  grid-column: span 1 / span 1;
 }.flex {
   display: flex;
 }.grid {
@@ -374,6 +386,12 @@ video {
   display: inline-grid;
 }.grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}.grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }.flex-col {
   flex-direction: column;
 }.items-end {
@@ -382,6 +400,10 @@ video {
   justify-content: center;
 }.gap-4 {
   gap: 1rem;
+}.gap-2 {
+  gap: 0.5rem;
+}.gap-3 {
+  gap: 0.75rem;
 }.text-center {
   text-align: center;
 }.text-2xl {

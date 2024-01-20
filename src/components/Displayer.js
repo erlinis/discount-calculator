@@ -1,13 +1,7 @@
 import PropTypes from 'prop-types';
 import { formatNumber } from '../lib/format';
 
-export default function Displayer({
-  saving,
-  discount,
-  price,
-  salePrice,
-  description,
-}) {
+export default function Displayer({ saving, discount, salePrice }) {
   return (
     <div className="box">
       <div className="diplayer__box flex flex-col align-items-center justify-center">
@@ -40,9 +34,7 @@ export default function Displayer({
 }
 
 Displayer.propTypes = {
-  price: PropTypes.string.isRequired,
   discount: PropTypes.string.isRequired,
   saving: PropTypes.number.isRequired,
   salePrice: PropTypes.number.isRequired,
-  description: PropTypes.string,
 };

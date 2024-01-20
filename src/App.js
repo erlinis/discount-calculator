@@ -9,28 +9,31 @@ function App() {
   const [state, setState] = useState(() => {
     return {
       discounts: getDiscountList(),
-      price: '',
-      discount: 40,
-      description: '',
       showInstallMessage: isAppleDevice() && !getInstallMessage(),
     };
   });
 
-  function onChangeInput(event) {
-    var field = event.target;
-
-    setState((prevState) => {
-      return {
-        ...prevState,
-        [field.name]: field.value,
-      };
-    });
-  }
-
-  function onAddDiscount(price, discount, salePrice, saving, description) {
+  /**
+   *
+   * @param {number} price
+   * @param {number} amount
+   * @param {string} discount
+   * @param {number} salePrice
+   * @param {string} saving
+   * @param {string} description
+   */
+  function onAddDiscount(
+    price,
+    amount,
+    discount,
+    salePrice,
+    saving,
+    description
+  ) {
     var discountRow = {
       id: Date.now(),
       price: Number(price),
+      amount: Number(amount),
       discount: discount,
       saving: saving,
       salePrice: Number(salePrice),
@@ -41,21 +44,8 @@ function App() {
       return {
         ...prevState,
         discounts: [discountRow, ...prevState.discounts],
-        price: '',
-        description: '',
       };
     });
-
-    // this.setState(
-    //   {
-    //     discounts: [discountRow, ...this.state.discounts],
-    //     price: '',
-    //     description: '',
-    //   },
-    //   () => {
-    //     this.focusPriceInput()
-    //   }
-    // )
   }
 
   function onDeleteDiscount(itemId) {
@@ -65,15 +55,6 @@ function App() {
         discounts: prevState.discounts.filter((item) => item.id !== itemId),
       };
     });
-
-    // this.setState(
-    //   {
-    //     discounts: this.state.discounts.filter((item) => item.id !== itemId),
-    //   },
-    //   () => {
-    //     this.focusPriceInput()
-    //   }
-    // )
   }
 
   var discounts = state.discounts;
@@ -120,12 +101,8 @@ function App() {
       <div className="container-wrapper">
         <div className="">
           <Calculator
-            price={state.price}
-            description={state.description}
             priceInputRef={priceInputRef}
-            discount={state.discount}
             onAddDiscount={onAddDiscount}
-            onChangeInput={onChangeInput}
           />
           <DiscountList
             discounts={state.discounts}
