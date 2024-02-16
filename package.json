@@ -2,69 +2,33 @@
   "name": "discount-calculator",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build:css": "postcss src/styles/index.css -o src/index.css",
-    "watch:css": "pnpm build:css -w",
-    "start": "NODE_ENV=development concurrently \"pnpm watch:css\" \"react-scripts start\"",
-    "build": "NODE_ENV=production pnpm build:css && react-scripts build",
-    "postbuild": "react-snap && surge ./build --domain https://discount-calculator.surge.sh/",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "analyze": "source-map-explorer build/static/js/main.*"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "postbuild": "surge ./build --domain https://discount-calculator.surge.sh/",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^3.5.1",
-    "workbox-background-sync": "^7.0.0",
-    "workbox-broadcast-update": "^7.0.0",
-    "workbox-cacheable-response": "^7.0.0",
-    "workbox-core": "^7.0.0",
-    "workbox-expiration": "^7.0.0",
-    "workbox-google-analytics": "^7.0.0",
-    "workbox-navigation-preload": "^7.0.0",
-    "workbox-precaching": "^7.0.0",
-    "workbox-range-requests": "^7.0.0",
-    "workbox-routing": "^7.0.0",
-    "workbox-strategies": "^7.0.0",
-    "workbox-streams": "^7.0.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.17",
-    "concurrently": "^8.2.2",
-    "cssnano": "^6.0.3",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "postcss": "^8.4.33",
-    "postcss-cli": "^11.0.0",
-    "postcss-import": "^16.0.0",
-    "postcss-preset-env": "^9.3.0",
-    "postcss-uncss": "^0.17.0",
-    "react-snap": "^1.23.0",
-    "source-map-explorer": "^2.5.3",
-    "surge": "^0.23.1",
-    "tailwindcss": "^3.4.1",
-    "uncss": "^0.17.3"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "volta": {
-    "node": "20.11.0"
-  },
-  "engines": {
-    "node": "20.11.0"
-  },
-  "packageManager": "pnpm@8.14.1",
-  "reactSnap": {
-    "source": "build",
-    "minifyHtml": {
-      "collapseWhitespace": false,
-      "removeComments": false
-    }
+    "@biomejs/biome": "1.5.3",
+    "@types/react": "18.2.55",
+    "@types/react-dom": "18.2.19",
+    "@typescript-eslint/eslint-plugin": "7.0.1",
+    "@typescript-eslint/parser": "7.0.1",
+    "@vitejs/plugin-react": "4.2.1",
+    "autoprefixer": "10.4.17",
+    "daisyui": "^4.7.2",
+    "eslint": "8.56.0",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-react-refresh": "0.4.5",
+    "postcss": "8.4.35",
+    "tailwindcss": "3.4.1",
+    "typescript": "5.3.3",
+    "vite": "5.1.3"
   }
 }

@@ -1,10 +1,6 @@
-// const cssnano = require('cssnano')
-
-module.exports = {
+export default {
   plugins: {
-    tailwindcss: { config: 'tailwind.config.js' },
+    tailwindcss: {},
     autoprefixer: {},
-    'postcss-import': {},
-    // 'postcss-preset-env': {},
   },
 }
