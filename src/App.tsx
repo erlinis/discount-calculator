@@ -1,9 +1,9 @@
-function App() {
-  return (
-    <>
-      <h1>start</h1>
-    </>
-  );
-}
+import { createBrowserRouter } from 'react-router-dom';
+import { Lists } from './app/lists';
 
-export default App;
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Lists />,
+  },
+]);
