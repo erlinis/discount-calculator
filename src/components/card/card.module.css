@@ -1,6 +1,5 @@
 .card {
   @apply bg-white shadow-custom overflow-hidden;
-  border-radius: 1.25rem;
 }
 .body {
   @apply p-5;

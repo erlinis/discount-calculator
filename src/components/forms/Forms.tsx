@@ -19,3 +19,15 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 );
 
 TextInput.displayName = 'TextInput';
+
+export type LabelProps = ComponentPropsWithoutRef<'label'>;
+
+export function Label({ children, className, ...props }: LabelProps) {
+  return (
+    <label className={clsx(className, styles.label)} {...props}>
+      {children}
+    </label>
+  );
+}
+
+Label.displayName = 'Label';

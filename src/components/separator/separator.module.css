@@ -1,0 +1,27 @@
+.separator {
+  @apply my-2 border-t-gray-lighter;
+  border-top-width: 2px;
+  border-top-style: dashed;
+}
+
+.separator-round {
+  @apply relative overflow-visible my-4 mx-4;
+  &:before,
+  &:after {
+    @apply content-[''] block w-3 h-5 
+    /* rounded-full  */
+    bg-gray-lighter mx-auto
+    absolute bottom-1;
+    top: -11px;
+  }
+  &:before {
+    @apply /* rounded-tl-none rounded-bl-none */
+    -left-4;
+    clip-path: circle(50% at 0 50%);
+  }
+  &:after {
+    @apply /* rounded-tr-none rounded-br-none */
+    -right-4;
+    clip-path: circle(50% at 100% 50%);
+  }
+}

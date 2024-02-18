@@ -7,6 +7,7 @@ export default {
   theme: {
     colors: {
       red: '#F25C55',
+      'gray-darker': '#75759E',
       'gray-dark': '#28255b',
       gray: '#5C5C7D',
       'gray-light': '#9999AC',
