@@ -1,5 +1,5 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
-import typo from '@tailwindcss/typography';
+import defaultTheme from 'tailwindcss/defaultTheme'
+import typo from '@tailwindcss/typography'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -28,6 +28,27 @@ export default {
         900: '#5F0B07',
         950: '#450805',
       },
+
+      secondary: {
+        DEFAULT: '#28255b',
+        50: '#FFFFFF',
+        100: '#F0F1F5', //'gray-lighter'
+        200: '#D9DBE6',
+        300: '#C2C5D8',
+        400: '#ACB0CA',
+        500: '#9599BC',
+        600: '#7E83AE',
+        700: '#666A9F',
+        800: '#28255b',
+      },
+
+      third: {
+        DEFAULT: '#5C5C7D',
+        50: '#FFFFFF',
+        100: '#F0F1F5',
+        200: '#D9DBE6',
+        300: '#C2C5D8',
+      },
     },
     extend: {
       fontFamily: {
@@ -42,6 +63,6 @@ export default {
     },
   },
   plugins: [typo],
-};
+}
 
 // create a tailwing color shades called primary with #F25C55

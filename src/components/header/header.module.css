@@ -1,5 +1,5 @@
 .header {
-  @apply grid grid-cols-3 gap-4 items-center h-12 py-1 px-4 mb-4;
+  @apply grid grid-cols-3 gap-4 items-center h-12 py-1 px-4;
 }
 
 .item {
