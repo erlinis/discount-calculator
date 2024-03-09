@@ -1,10 +1,12 @@
-import { ComponentPropsWithoutRef } from 'react'
-import { Button } from '../components/button/Button'
-import { Card, CardBody } from '../components/card/Card'
-import { Label, TextInput } from '../components/forms/Forms'
-import { Form } from 'react-router-dom'
+import { ComponentPropsWithoutRef } from "react";
+import { Button } from "./button/Button";
+import { Card, CardBody } from "./card/Card";
+import { Label, TextInput } from "./forms/Forms";
+import { Form } from "react-router-dom";
 
-export function FormList(props: Omit<ComponentPropsWithoutRef<'form'>, 'encType'>) {
+export function ListForm(
+  props: Omit<ComponentPropsWithoutRef<"form">, "encType">
+) {
   return (
     <>
       <Card shape="brand" className="max-w-3xl mx-auto w-full mb-8">
@@ -26,7 +28,12 @@ export function FormList(props: Omit<ComponentPropsWithoutRef<'form'>, 'encType'
               <Label htmlFor="currency" className="">
                 Currency
               </Label>
-              <TextInput id="currency" name="currency" type="text" placeholder="" />
+              <TextInput
+                id="currency"
+                name="currency"
+                type="text"
+                placeholder=""
+              />
             </div>
           </CardBody>
         </Form>
@@ -36,5 +43,5 @@ export function FormList(props: Omit<ComponentPropsWithoutRef<'form'>, 'encType'
         Save
       </Button>
     </>
-  )
+  );
 }

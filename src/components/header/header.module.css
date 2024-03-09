@@ -1,5 +1,6 @@
 .header {
-  @apply grid grid-cols-3 gap-4 items-center h-12 py-1 px-4;
+  @apply grid gap-4 items-center h-12 py-1 px-4;
+  grid-template-columns: max-content minmax(0, 2fr) max-content;
 }
 
 .item {

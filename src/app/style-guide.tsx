@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
-import { Button } from '../components/button/Button';
-import { Card, CardBody } from '../components/card/Card';
-import { Label, TextInput } from '../components/forms/Forms';
-import { Header, HeaderItem } from '../components/header/Header';
-import { Icon } from '../components/icon/Icon';
-import { Separator, SeparatorRound } from '../components/separator/Separator';
+import { Link } from 'react-router-dom'
+import { Button } from '../components/button/Button'
+import { Card, CardBody } from '../components/card/Card'
+import { Label, TextInput } from '../components/forms/Forms'
+import { Header, HeaderItem } from '../components/header/Header'
+import { Icon } from '../components/icon/Icon'
+import { SeparatorRound } from '../components/separator/Separator'
 
-export function Lists() {
+export function StyleGuide() {
   return (
     <>
       <Header>
@@ -26,11 +26,7 @@ export function Lists() {
           <Label htmlFor="field" className="">
             Name
           </Label>
-          <TextInput
-            id="field"
-            type="text"
-            placeholder="Search for discounts"
-          />
+          <TextInput id="field" type="text" placeholder="Search for discounts" />
         </CardBody>
         <SeparatorRound />
         <CardBody className="pt-0">
@@ -42,5 +38,5 @@ export function Lists() {
         </CardBody>
       </Card>
     </>
-  );
+  )
 }
