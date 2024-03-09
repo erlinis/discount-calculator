@@ -53,7 +53,7 @@ export function ListDetails() {
         </HeaderItem>
         <HeaderItem position="end" className="justify-end">
           <Button asChild block={false} shape="brand">
-            <Link to={`/lists/${list.id}/edit`}>
+            <Link to={`/lists/${list.id}/edit`} unstable_viewTransition>
               <Icon iconName="edit" />
             </Link>
           </Button>
@@ -61,7 +61,12 @@ export function ListDetails() {
       </Header>
 
       <Wrapper className="pb-24">
-        <Card className="max-w-3xl mx-auto w-full mb-8">
+        <Card
+          className="max-w-3xl mx-auto w-full mb-8"
+          style={{
+            viewTransitionName: "discount-item-list-to-detail",
+          }}
+        >
           <Tabs defaultValue="unit">
             <TabsList>
               <TabsTrigger value="unit">
@@ -112,7 +117,10 @@ export function ListDetails() {
 export function createListDetailLoader({
   listStore,
   itemsStore,
-}: { listStore: StoreCache; itemsStore: StoreCache }) {
+}: {
+  listStore: StoreCache;
+  itemsStore: StoreCache;
+}) {
   return async function loader({ params }: LoaderFunctionArgs) {
     const list = await loadList(params.id, listStore);
     const items = await loadItems(params.id, itemsStore);
@@ -149,7 +157,10 @@ export function createItemAction({
 export function createDeleteItemAction({
   itemsStore,
   listStore,
-}: { itemsStore: StoreCache; listStore: StoreCache }) {
+}: {
+  itemsStore: StoreCache;
+  listStore: StoreCache;
+}) {
   return async function action({ params }: LoaderFunctionArgs) {
     const items = await loadItems(params.id, itemsStore);
     const newItems = items.filter((item) => item.id !== params.itemId);
@@ -172,7 +183,7 @@ async function loadList(listId: string | undefined, listStore: StoreCache) {
 
 async function loadItems(
   listId: string | undefined,
-  itemsStore: StoreCache
+  itemsStore: StoreCache,
 ): Promise<ItemsSchema> {
   return parseItemsSchema(await itemsStore.get(listId ?? ""));
 }
@@ -180,7 +191,7 @@ async function loadItems(
 async function updateListTotal(
   listId: string | undefined,
   listStore: StoreCache,
-  items: ItemsSchema
+  items: ItemsSchema,
 ) {
   try {
     const list = await loadList(listId, listStore);

@@ -1,12 +1,12 @@
 import { Link, LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import { ListEmptyState } from "../components/ListEmptyState";
-import { Listing } from "../components/Listing";
 import { Button } from "../components/button/Button";
 import { Header, HeaderItem } from "../components/header/Header";
 import { Icon } from "../components/icon/Icon";
 import { Wrapper } from "../components/wrapper/wrapper";
 import { parseListAll } from "../modules/lists/lists";
 import { StoreCache } from "../utils/money-clip";
+import { Listing } from "../components/Listing/Listing";
 
 export function Lists() {
   const data = useLoaderData() as Awaited<
@@ -25,7 +25,11 @@ export function Lists() {
           <>
             <HeaderItem position="end" className="justify-end">
               <Button asChild block={true} shape="brand">
-                <Link className="btn btn-primary" to="lists/new">
+                <Link
+                  className="btn btn-primary"
+                  to="lists/new"
+                  unstable_viewTransition
+                >
                   <Icon iconName="plus" />
                 </Link>
               </Button>

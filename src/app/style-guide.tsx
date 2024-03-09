@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
-import { Button } from '../components/button/Button'
-import { Card, CardBody } from '../components/card/Card'
-import { Label, TextInput } from '../components/forms/Forms'
-import { Header, HeaderItem } from '../components/header/Header'
-import { Icon } from '../components/icon/Icon'
-import { SeparatorRound } from '../components/separator/Separator'
+import { Link } from "react-router-dom";
+import { Button } from "../components/button/Button";
+import { Card, CardBody } from "../components/card/Card";
+import { Label, TextInput } from "../components/forms/Forms";
+import { Header, HeaderItem } from "../components/header/Header";
+import { Icon } from "../components/icon/Icon";
+import { SeparatorRound } from "../components/separator/Separator";
 
 export function StyleGuide() {
   return (
@@ -26,17 +26,25 @@ export function StyleGuide() {
           <Label htmlFor="field" className="">
             Name
           </Label>
-          <TextInput id="field" type="text" placeholder="Search for discounts" />
+          <TextInput
+            id="field"
+            type="text"
+            placeholder="Search for discounts"
+          />
         </CardBody>
         <SeparatorRound />
         <CardBody className="pt-0">
           <Button asChild block={false}>
-            <Link className="btn btn-primary" to="lists/new">
+            <Link
+              className="btn btn-primary"
+              to="lists/new"
+              unstable_viewTransition
+            >
               Create new list
             </Link>
           </Button>
         </CardBody>
       </Card>
     </>
-  )
+  );
 }

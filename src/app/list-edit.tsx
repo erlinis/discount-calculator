@@ -18,7 +18,7 @@ export function ListEdit() {
     <>
       <Header>
         <HeaderItem position="start">
-          <Link className="btn" to="/">
+          <Link className="btn" to="/" unstable_viewTransition>
             <Icon iconName="chevron-left" className="text-secondary" />
           </Link>
         </HeaderItem>

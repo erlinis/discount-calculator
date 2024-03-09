@@ -22,7 +22,11 @@ export function ListEmptyState() {
 
             <CardBody className="pt-0">
               <Button asChild block={true}>
-                <Link className="btn btn-primary" to="lists/new">
+                <Link
+                  className="btn btn-primary"
+                  to="lists/new"
+                  unstable_viewTransition
+                >
                   Create new list
                 </Link>
               </Button>
