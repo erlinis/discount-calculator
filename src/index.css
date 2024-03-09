@@ -5,6 +5,6 @@
 .root {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  gap: 10px;
+  gap: 15px;
   height: 100%;
 }

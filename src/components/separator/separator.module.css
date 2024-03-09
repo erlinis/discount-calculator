@@ -5,7 +5,7 @@
 }
 
 .separator-round {
-  @apply relative overflow-visible my-4 mx-4;
+  @apply relative overflow-visible my-2 mx-4;
   &:before,
   &:after {
     @apply content-[''] block w-3 h-5

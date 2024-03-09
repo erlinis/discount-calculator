@@ -8,8 +8,8 @@ import { Separator } from "./separator/Separator";
 export function Listing({ data }: { data: Array<ListSchema> }) {
   return (
     <>
-      <div className="flex flex-col content-center max-w-3xl mx-auto w-full mt-2 p-6 text-center">
-        <Card shape="brand" className="w-full py-3">
+      <div className="flex flex-col content-center text-center">
+        <Card shape="brand" className="w-full py-3 pl-3 pr-2">
           {data.map((list, index) => (
             <Fragment key={list.id}>
               <Link

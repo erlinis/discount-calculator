@@ -51,7 +51,7 @@ export const set = (
       }),
       store
     )
-    .catch((e) => null);
+    .catch(() => null);
 };
 
 export const getAll = (specs: Options, store: idbKeyVal.UseStore) => {

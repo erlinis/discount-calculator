@@ -4,9 +4,11 @@ import {
   useLoaderData,
   useParams,
 } from "react-router";
+import { Link } from "react-router-dom";
 import { Button } from "../components/button/Button";
 import { Card, CardBody } from "../components/card/Card";
 import { DiscountUnitItem } from "../components/discount-items/DiscountUnitItem";
+import { DiscountWeightItem } from "../components/discount-items/DiscountWeightItem";
 import { UnitItemForm } from "../components/discount-items/UnitItemForm";
 import { WeightItemForm } from "../components/discount-items/WeightItemForm";
 import { Header, HeaderItem } from "../components/header/Header";
@@ -24,12 +26,11 @@ import {
   parseItemParamSchema,
   parseItemsSchema,
 } from "../modules/items/items";
-import { parseList } from "../modules/lists/lists";
-import { StoreCache } from "../utils/money-clip";
-import { Link } from "react-router-dom";
-import { DiscountWeightItem } from "../components/discount-items/DiscountWeightItem";
-import { formatPrice } from "../utils/format";
 import { ItemsSchema } from "../modules/items/items.schema";
+import { parseList } from "../modules/lists/lists";
+import { formatPrice } from "../utils/format";
+import { StoreCache } from "../utils/money-clip";
+import { Wrapper } from "../components/wrapper/wrapper";
 
 export function ListDetails() {
   const { id = "" } = useParams();
@@ -46,7 +47,7 @@ export function ListDetails() {
           </Link>
         </HeaderItem>
         <HeaderItem position="center" className="justify-center">
-          <h1 className="text-secondary text-base font-semibold overflow-ellipsis text-nowrap overflow-hidden">
+          <h1 className="text-secondary text-lg font-semibold overflow-ellipsis text-nowrap overflow-hidden">
             {list.name}
           </h1>
         </HeaderItem>
@@ -59,7 +60,7 @@ export function ListDetails() {
         </HeaderItem>
       </Header>
 
-      <div className="max-w-3xl mx-auto w-full px-8 pb-24">
+      <Wrapper className="pb-24">
         <Card className="max-w-3xl mx-auto w-full mb-8">
           <Tabs defaultValue="unit">
             <TabsList>
@@ -91,9 +92,9 @@ export function ListDetails() {
             );
           })}
         </div>
-      </div>
+      </Wrapper>
       <article className="px-8 py-2 fixed w-full bottom-0 bg-white shadow-2xl shadow-gray-darker">
-        <div className="grid grid-cols-2 auto-rows-auto max-w-[720px] mx-auto">
+        <Wrapper className="grid grid-cols-2 auto-rows-auto">
           <span className="text-2xl font-semibold">Total:</span>
           <span className="text-end text-2xl font-semibold text-primary-600">
             {formatPrice(calculateTotal(items))}
@@ -102,7 +103,7 @@ export function ListDetails() {
           <span className="text-end text-gray-light">
             {formatPrice(calculateSaved(items))}
           </span>
-        </div>
+        </Wrapper>
       </article>
     </>
   );
@@ -144,10 +145,8 @@ export function createItemAction({
 export function createDeleteItemAction({
   itemsStore,
 }: { itemsStore: StoreCache }) {
-  return async function action({ params, request }: LoaderFunctionArgs) {
-    console.log(params);
+  return async function action({ params }: LoaderFunctionArgs) {
     const items = await loadItems(params.id, itemsStore);
-
     const newItems = items.filter((item) => item.id !== params.itemId);
 
     itemsStore.set(params.id ?? "", newItems);

@@ -20,10 +20,8 @@ export function WeightItemForm() {
           <TextInput
             id="quantity"
             name="quantity"
-            placeholder="1"
             type="number"
             min="0"
-            defaultValue={1}
             required
           />
         </div>

@@ -6,8 +6,8 @@ import { Icon } from "./icon/Icon";
 export function ListEmptyState() {
   return (
     <>
-      <div className="flex flex-col justify-center content-center items-center max-w-3xl mx-auto w-full px-8 text-center">
-        <div className="-mt-12">
+      <div className="flex flex-col px-8 justify-center items-center text-center">
+        <div className="mt-20">
           <Icon iconName="store" className="text-secondary text-[90px] mb-5" />
 
           <Card shape="brand" className="max-w-3xl mx-auto w-full">

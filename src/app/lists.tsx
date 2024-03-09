@@ -1,9 +1,10 @@
 import { Link, LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import { ListEmptyState } from "../components/ListEmptyState";
+import { Listing } from "../components/Listing";
 import { Button } from "../components/button/Button";
 import { Header, HeaderItem } from "../components/header/Header";
 import { Icon } from "../components/icon/Icon";
-import { Listing } from "../components/Listing";
+import { Wrapper } from "../components/wrapper/wrapper";
 import { parseListAll } from "../modules/lists/lists";
 import { StoreCache } from "../utils/money-clip";
 
@@ -33,7 +34,9 @@ export function Lists() {
         ) : null}
       </Header>
 
-      {isEmpty ? <ListEmptyState /> : <Listing data={data} />}
+      <Wrapper>
+        {isEmpty ? <ListEmptyState /> : <Listing data={data} />}
+      </Wrapper>
     </>
   );
 }
