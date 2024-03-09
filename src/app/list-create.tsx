@@ -7,7 +7,7 @@ import { parseList } from "../modules/lists/lists";
 import { StoreCache } from "../utils/money-clip";
 import { uniqueId } from "../utils/utils";
 
-export function CreateList() {
+export function ListCreate() {
   return (
     <>
       <Header>

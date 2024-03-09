@@ -4,6 +4,7 @@ import { Card } from "./card/Card";
 import { Icon } from "./icon/Icon";
 import { ListSchema } from "../modules/lists/lists.schema";
 import { Separator } from "./separator/Separator";
+import { formatPrice } from "../utils/format";
 
 export function Listing({ data }: { data: Array<ListSchema> }) {
   return (
@@ -15,6 +16,7 @@ export function Listing({ data }: { data: Array<ListSchema> }) {
               <Link
                 to={`/lists/${list.id}`}
                 className="flex justify-between w-full py-1 pl-3 pr-3 gap-2"
+                unstable_viewTransition
               >
                 <div className="flex-1 grid grid-cols-[minmax(0,_2fr)_minmax(0,_1fr)] gap-1">
                   <div className="flex justify-start items-center text-xs text-primary gap-1">
@@ -35,7 +37,9 @@ export function Listing({ data }: { data: Array<ListSchema> }) {
                     </span>
                   </div>
                   <div className="flex justify-end">
-                    <span className="text-primary font-semibold">55 €</span>
+                    <span className="text-primary font-semibold">
+                      {formatPrice(list.total)}
+                    </span>
                   </div>
                 </div>
                 <div className="self-center">

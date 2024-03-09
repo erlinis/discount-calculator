@@ -10,7 +10,7 @@ export function WeightItemForm() {
   return (
     <Form id="weightForm" method="post" ref={form}>
       <input type="hidden" name="type" value="weight" />
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-4 gap-3 mb-2">
         <div className="col-span-3">
           <Label htmlFor="name">Name</Label>
           <TextInput id="name" name="name" max="100" type="text" />

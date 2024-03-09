@@ -63,11 +63,11 @@ export function DiscountUnitItem({
 
       <SeparatorRound className="" />
 
-      <div className="grid grid-cols-2 items-top px-5 mb-1">
+      <div className="grid grid-cols-2 items-top px-5 mb-2">
         <span className="flex justify-start text-secondary text-lg font-semibold">
           Sale Price
         </span>
-        <div className="flex justify-end text-primary font-semibold">
+        <div className="flex justify-end text-primary text-lg font-semibold">
           {formatPrice(discountItem.salesPrice)}
         </div>
       </div>

@@ -42,7 +42,7 @@ export function ListDetails() {
     <>
       <Header>
         <HeaderItem position="start" className="w-1/4">
-          <Link className="btn" to="/">
+          <Link className="btn" to="/" unstable_viewTransition>
             <Icon iconName="chevron-left" className="text-secondary" />
           </Link>
         </HeaderItem>
@@ -111,19 +111,21 @@ export function ListDetails() {
 
 export function createListDetailLoader({
   listStore,
-  itemStore,
-}: { listStore: StoreCache; itemStore: StoreCache }) {
+  itemsStore,
+}: { listStore: StoreCache; itemsStore: StoreCache }) {
   return async function loader({ params }: LoaderFunctionArgs) {
     const list = await loadList(params.id, listStore);
-    const items = await loadItems(params.id, itemStore);
+    const items = await loadItems(params.id, itemsStore);
     return { list, items };
   };
 }
 
 export function createItemAction({
-  itemStore,
+  itemsStore,
+  listStore,
 }: {
-  itemStore: StoreCache;
+  itemsStore: StoreCache;
+  listStore: StoreCache;
 }) {
   return async function action({ params, request }: LoaderFunctionArgs) {
     try {
@@ -131,10 +133,12 @@ export function createItemAction({
       const itemParamSchema = parseItemParamSchema(itemData);
       const item = itemFactory(itemParamSchema);
 
-      const items = await loadItems(params.id, itemStore);
+      const items = await loadItems(params.id, itemsStore);
       items.unshift(item);
 
-      await itemStore.set(params.id ?? "", items);
+      await itemsStore.set(params.id ?? "", items);
+
+      updateListTotal(params.id, listStore, items);
       return { ok: true };
     } catch (error) {
       return {};
@@ -144,12 +148,15 @@ export function createItemAction({
 
 export function createDeleteItemAction({
   itemsStore,
-}: { itemsStore: StoreCache }) {
+  listStore,
+}: { itemsStore: StoreCache; listStore: StoreCache }) {
   return async function action({ params }: LoaderFunctionArgs) {
     const items = await loadItems(params.id, itemsStore);
     const newItems = items.filter((item) => item.id !== params.itemId);
 
     itemsStore.set(params.id ?? "", newItems);
+
+    updateListTotal(params.id, listStore, newItems);
 
     return redirect(`/lists/${params.id}`, {});
   };
@@ -168,4 +175,20 @@ async function loadItems(
   itemsStore: StoreCache
 ): Promise<ItemsSchema> {
   return parseItemsSchema(await itemsStore.get(listId ?? ""));
+}
+
+async function updateListTotal(
+  listId: string | undefined,
+  listStore: StoreCache,
+  items: ItemsSchema
+) {
+  try {
+    const list = await loadList(listId, listStore);
+    list.total = calculateTotal(items);
+
+    await listStore.set(listId ?? "", list);
+    return { ok: true };
+  } catch (error) {
+    throw new Error("Cannot update the list total");
+  }
 }
