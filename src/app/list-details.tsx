@@ -5,12 +5,12 @@ import {
   useParams,
 } from "react-router";
 import { Link } from "react-router-dom";
+import { DiscountUnitItem } from "../components/DiscountItems/UnitItem";
+import { UnitItemForm } from "../components/DiscountItems/UnitItemForm";
+import { DiscountWeightItem } from "../components/DiscountItems/WeightItem";
+import { WeightItemForm } from "../components/DiscountItems/WeightItemForm";
 import { Button } from "../components/button/Button";
 import { Card, CardBody } from "../components/card/Card";
-import { DiscountUnitItem } from "../components/discount-items/DiscountUnitItem";
-import { DiscountWeightItem } from "../components/discount-items/DiscountWeightItem";
-import { UnitItemForm } from "../components/discount-items/UnitItemForm";
-import { WeightItemForm } from "../components/discount-items/WeightItemForm";
 import { Header, HeaderItem } from "../components/header/Header";
 import { Icon } from "../components/icon/Icon";
 import {
@@ -19,6 +19,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "../components/tabs/tabs";
+import { Wrapper } from "../components/wrapper/wrapper";
 import {
   calculateSaved,
   calculateTotal,
@@ -30,7 +31,6 @@ import { ItemsSchema } from "../modules/items/items.schema";
 import { parseList } from "../modules/lists/lists";
 import { formatPrice } from "../utils/format";
 import { StoreCache } from "../utils/money-clip";
-import { Wrapper } from "../components/wrapper/wrapper";
 
 export function ListDetails() {
   const { id = "" } = useParams();
@@ -77,12 +77,12 @@ export function ListDetails() {
               </TabsTrigger>
             </TabsList>
             <TabsContent value="unit">
-              <CardBody className="pb-5">
+              <CardBody className="pt-1 pb-5">
                 <UnitItemForm />
               </CardBody>
             </TabsContent>
             <TabsContent value="weight">
-              <CardBody className="pb-5">
+              <CardBody className="pt-1 pb-5">
                 <WeightItemForm />
               </CardBody>
             </TabsContent>
@@ -183,7 +183,7 @@ async function loadList(listId: string | undefined, listStore: StoreCache) {
 
 async function loadItems(
   listId: string | undefined,
-  itemsStore: StoreCache,
+  itemsStore: StoreCache
 ): Promise<ItemsSchema> {
   return parseItemsSchema(await itemsStore.get(listId ?? ""));
 }
@@ -191,7 +191,7 @@ async function loadItems(
 async function updateListTotal(
   listId: string | undefined,
   listStore: StoreCache,
-  items: ItemsSchema,
+  items: ItemsSchema
 ) {
   try {
     const list = await loadList(listId, listStore);

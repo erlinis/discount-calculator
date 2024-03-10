@@ -6,7 +6,7 @@ import { Icon } from "../components/icon/Icon";
 import { Wrapper } from "../components/wrapper/wrapper";
 import { parseListAll } from "../modules/lists/lists";
 import { StoreCache } from "../utils/money-clip";
-import { Listing } from "../components/Listing/Listing";
+import { Listing } from "../components/DiscountList/Listing";
 
 export function Lists() {
   const data = useLoaderData() as Awaited<
@@ -18,7 +18,7 @@ export function Lists() {
     <>
       <Header>
         <HeaderItem position="center" className="justify-center">
-          <h1 className="text-xl font-semibold">My list</h1>
+          <h1 className="text-xl font-semibold">Discount Lists</h1>
         </HeaderItem>
 
         {!isEmpty ? (
