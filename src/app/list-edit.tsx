@@ -1,5 +1,6 @@
 import {
   ActionFunctionArgs,
+  Form,
   Link,
   redirect,
   useLoaderData,
@@ -9,6 +10,7 @@ import { Header, HeaderItem } from "../components/header/Header";
 import { Icon } from "../components/icon/Icon";
 import { parseList } from "../modules/lists/lists";
 import { StoreCache } from "../utils/money-clip";
+import { Button } from "../components/button/Button";
 
 export function ListEdit() {
   const { list } = useLoaderData() as Awaited<
@@ -25,6 +27,30 @@ export function ListEdit() {
         <HeaderItem position="center" className="justify-center">
           <h1 className="text-secondary text-xl font-semibold">Edit list</h1>
         </HeaderItem>
+        {list ? (
+          <>
+            <HeaderItem position="end" className="justify-end">
+              <Form
+                id="formDeleteList"
+                method="post"
+                action={`/lists/${list.id}/delete`}
+              >
+                <input type="hidden" name="id" value={list.id} />
+                <Button
+                  key="delete"
+                  className="text-secondary"
+                  type="submit"
+                  variant="none"
+                  value="delete"
+                  shape="brand"
+                  form="formDeleteList"
+                >
+                  <Icon iconName="bin" />
+                </Button>
+              </Form>
+            </HeaderItem>
+          </>
+        ) : null}
       </Header>
 
       <div className="max-w-3xl mx-auto w-full px-8">

@@ -6,7 +6,7 @@ import { twMerge } from "tailwind-merge";
 export type ButtonProps = {
   asChild?: boolean;
   block?: boolean;
-  variant?: "primary" | "none";
+  variant?: "primary" | "secondary" | "none";
   shape?: "rounded" | "square" | "brand";
 } & ComponentPropsWithoutRef<"button">;
 
@@ -36,6 +36,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               "aspect-square rounded-lg p-2": shape === "square",
               "rounded-full": shape === "rounded",
               [primaryButtonClasses]: variant === "primary",
+              [secondaryButtonClasses]: variant === "secondary",
               "bg-none shadow-none": variant === "none",
             },
             className
@@ -57,4 +58,8 @@ const buttonClasses = clsx(
 
 const primaryButtonClasses = clsx(
   "bg-primary text-white hover:bg-primary-700 focus:ring-primary-400 active:bg-primary-800 active:ring-primary-900"
+);
+
+const secondaryButtonClasses = clsx(
+  "bg-gray-light text-white hover:bg-primary-700 focus:ring-primary-400 active:bg-primary-800 active:ring-primary-900"
 );

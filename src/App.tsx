@@ -5,20 +5,22 @@ import {
 } from "./app/list-create";
 import {
   ListDetails,
+  createDeleteItemAction,
   createItemAction,
   createListDetailLoader,
-  createDeleteItemAction,
 } from "./app/list-details";
+import {
+  ListEdit,
+  // createListDeletetAction,
+  createListEditAction,
+  createListEditLoader,
+} from "./app/list-edit";
 import { Lists, createLoader as createListsViewLoader } from "./app/lists";
 import { RootLayout } from "./app/root-layout";
 import { StyleGuide } from "./app/style-guide";
 import { itemsStore } from "./modules/items/items";
 import { listsStore } from "./modules/lists/lists";
-import {
-  ListEdit,
-  createListEditAction,
-  createListEditLoader,
-} from "./app/list-edit";
+import { createListDeleteAction } from "./app/list-delete";
 
 export const router = createBrowserRouter([
   {
@@ -36,11 +38,20 @@ export const router = createBrowserRouter([
         action: createListAction(listsStore),
       },
       {
+        path: "/lists/:id/delete",
+        element: null,
+        action: createListDeleteAction({
+          listStore: listsStore,
+          itemsStore: itemsStore,
+        }),
+      },
+      {
         path: "/lists/:id/edit",
         element: <ListEdit />,
         loader: createListEditLoader(listsStore),
         action: createListEditAction(listsStore),
       },
+
       {
         path: "/lists/:id",
         element: <ListDetails />,

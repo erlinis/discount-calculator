@@ -52,7 +52,7 @@ export function ListDetails() {
           </h1>
         </HeaderItem>
         <HeaderItem position="end" className="justify-end">
-          <Button asChild block={false} shape="brand">
+          <Button asChild block={false} shape="brand" variant="none">
             <Link to={`/lists/${list.id}/edit`} unstable_viewTransition>
               <Icon iconName="edit" />
             </Link>
