@@ -41,18 +41,20 @@ export function ListDetails() {
   return (
     <>
       <Header>
-        <HeaderItem position="start" className="w-1/4">
-          <Link className="btn" to="/" unstable_viewTransition>
-            <Icon iconName="chevron-left" className="text-secondary" />
-          </Link>
+        <HeaderItem position="start">
+          <Button variant="none" asChild>
+            <Link to="/">
+              <Icon iconName="chevron-left" />
+            </Link>
+          </Button>
         </HeaderItem>
-        <HeaderItem position="center" className="justify-center">
+        <HeaderItem position="center">
           <h1 className="text-secondary text-lg font-semibold overflow-ellipsis text-nowrap overflow-hidden">
             {list.name}
           </h1>
         </HeaderItem>
-        <HeaderItem position="end" className="justify-end">
-          <Button asChild block={false} shape="brand" variant="none">
+        <HeaderItem position="end">
+          <Button asChild variant="none">
             <Link to={`/lists/${list.id}/edit`} unstable_viewTransition>
               <Icon iconName="edit" />
             </Link>

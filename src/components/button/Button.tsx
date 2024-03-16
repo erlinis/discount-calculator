@@ -6,8 +6,8 @@ import { twMerge } from "tailwind-merge";
 export type ButtonProps = {
   asChild?: boolean;
   block?: boolean;
-  variant?: "primary" | "secondary" | "none";
-  shape?: "rounded" | "square" | "brand";
+  variant?: "primary" | "secondary" | "link" | "none";
+  shape?: "rounded" | "square" | "brand" | "none";
 } & ComponentPropsWithoutRef<"button">;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -16,7 +16,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       className,
       block = true,
-      shape = "rounded",
+      shape = "none",
       variant = "primary",
       asChild,
       ...props
@@ -37,8 +37,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               "rounded-full": shape === "rounded",
               [primaryButtonClasses]: variant === "primary",
               [secondaryButtonClasses]: variant === "secondary",
-              "bg-none shadow-none": variant === "none",
             },
+            variant === "none" ? noneButtonClasses : "",
+            variant === "link" ? linkButtonClasses : "",
             className
           )
         )}
@@ -53,11 +54,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 
 const buttonClasses = clsx(
-  "justify-center align-middle py-1 px-5 rounded-xl font-bold shadow-md focus:outline-none focus:ring focus:ring-opacity-75 inline-flex items-center active:ring-2 active:ring-opacity-75"
+  "justify-center align-middle py-1 px-3 font-bold shadow-md focus:outline-none focus:ring focus:ring-opacity-75 inline-flex items-center active:ring-2 active:ring-opacity-75"
 );
 
 const primaryButtonClasses = clsx(
   "bg-primary text-white hover:bg-primary-700 focus:ring-primary-400 active:bg-primary-800 active:ring-primary-900"
+);
+
+const linkButtonClasses = clsx(
+  "bg-none shadow-none hover:text-primary-700 focus:text-primary-400 active:text-primary-800"
+);
+
+const noneButtonClasses = clsx(
+  "bg-none shadow-none hover:text-primary-700 focus:text-primary-400 active:text-primary-800"
 );
 
 const secondaryButtonClasses = clsx(

@@ -76,6 +76,7 @@ export function DiscountItemForm({
       <Button
         block={true}
         variant="primary"
+        shape="rounded"
         type="submit"
         form={formName}
         className="mt-4"

@@ -10,10 +10,10 @@ export function StyleGuide() {
   return (
     <>
       <Header>
-        <HeaderItem position="center" className="justify-center">
+        <HeaderItem position="center">
           <h1 className="text-xl font-semibold">My list</h1>
         </HeaderItem>
-        <HeaderItem position="end" className="justify-end">
+        <HeaderItem position="end">
           <Button block={false} shape="brand">
             <Icon iconName="plus" />
           </Button>

@@ -20,16 +20,18 @@ export function ListEdit() {
     <>
       <Header>
         <HeaderItem position="start">
-          <Link className="btn" to="/" unstable_viewTransition>
-            <Icon iconName="chevron-left" className="text-secondary" />
-          </Link>
+          <Button variant="link" asChild>
+            <Link to="/" unstable_viewTransition>
+              <Icon iconName="chevron-left" />
+            </Link>
+          </Button>
         </HeaderItem>
-        <HeaderItem position="center" className="justify-center">
+        <HeaderItem position="center">
           <h1 className="text-secondary text-xl font-semibold">Edit list</h1>
         </HeaderItem>
         {list ? (
           <>
-            <HeaderItem position="end" className="justify-end">
+            <HeaderItem position="end">
               <Form
                 id="formDeleteList"
                 method="post"
@@ -38,11 +40,9 @@ export function ListEdit() {
                 <input type="hidden" name="id" value={list.id} />
                 <Button
                   key="delete"
-                  className="text-secondary"
                   type="submit"
                   variant="none"
                   value="delete"
-                  shape="brand"
                   form="formDeleteList"
                 >
                   <Icon iconName="bin" />

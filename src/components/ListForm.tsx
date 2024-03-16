@@ -58,7 +58,13 @@ export function ListForm({
         </Form>
       </Card>
 
-      <Button block={true} variant="primary" type="submit" form="formList">
+      <Button
+        block={true}
+        variant="primary"
+        shape="rounded"
+        type="submit"
+        form="formList"
+      >
         Save
       </Button>
     </>

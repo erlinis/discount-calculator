@@ -39,11 +39,11 @@ export function DiscountItem({
             <Button
               type="submit"
               variant="none"
-              className="flex-1"
+              className="flex-1 text-third-400"
               value="delete"
               shape="square"
             >
-              <Icon iconName="bin" className="text-third-400" />
+              <Icon iconName="bin" />
             </Button>
           </Form>
         </div>

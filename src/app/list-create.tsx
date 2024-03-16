@@ -1,6 +1,7 @@
 import { ActionFunction, Link, redirect } from "react-router-dom";
 import { toast } from "sonner";
 import { ListForm } from "../components/ListForm";
+import { Button } from "../components/button/Button";
 import { Header, HeaderItem } from "../components/header/Header";
 import { Icon } from "../components/icon/Icon";
 import { parseList } from "../modules/lists/lists";
@@ -12,11 +13,13 @@ export function ListCreate() {
     <>
       <Header>
         <HeaderItem position="start">
-          <Link className="btn" to="/">
-            <Icon iconName="chevron-left" className="text-secondary" />
-          </Link>
+          <Button variant="none" asChild>
+            <Link to="/">
+              <Icon iconName="chevron-left" />
+            </Link>
+          </Button>
         </HeaderItem>
-        <HeaderItem position="center" className="justify-center">
+        <HeaderItem position="center">
           <h1 className="text-secondary text-xl font-semibold">New list</h1>
         </HeaderItem>
       </Header>
@@ -45,7 +48,7 @@ export function createAction(store: StoreCache): ActionFunction {
 
       toast.success("List created");
 
-      return redirect("/");
+      return redirect(`/lists/${listId}`);
     } catch (error) {
       toast.error("Error saving list");
       return null;

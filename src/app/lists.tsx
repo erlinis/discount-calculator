@@ -17,13 +17,13 @@ export function Lists() {
   return (
     <>
       <Header>
-        <HeaderItem position="center" className="justify-center">
+        <HeaderItem position="center">
           <h1 className="text-xl font-semibold">Discount Lists</h1>
         </HeaderItem>
 
         {!isEmpty ? (
           <>
-            <HeaderItem position="end" className="justify-end">
+            <HeaderItem position="end">
               <Button asChild block={true} shape="brand">
                 <Link
                   className="btn btn-primary"
