@@ -1,6 +1,6 @@
 {
   "name": "discount-calculator",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build:css": "postcss src/styles/index.css -o src/index.css",
