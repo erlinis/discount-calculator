@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="h-full" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="description"
+      content="Application to calculated sale price. Given a price and a discount percentage it gives you the final price that you have to pay."
+    />
+    <meta name="theme-color" content="#f25c55" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Discount %" />
+
+    <!--
+      In order to change the iOS status bar of your PWA, you must use the apple-mobile-web-app-status-bar-style meta tag.
+      Posible values: default, black, and black-translucent.
+      The `black-translucent` setting has white text and symbols, and will take the same background color as the body of your web app.
+      See https://medium.com/appscope/changing-the-ios-status-bar-of-your-progressive-web-app-9fc8fbe8e6ab -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Metadata for Microsoft -->
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.x
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+
+    <!-- To support shortcut icon on apple devices -->
+    <!-- Default -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60×60" href="/images/icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72×72" href="/images/icons/apple-touch-icon-72×72.png" />
+    <link rel="apple-touch-icon" sizes="76×76" href="/images/icons/apple-touch-icon-76×76.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114×114"
+      href="/images/icons/apple-touch-icon-114×114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144×144"
+      href="/images/icons/apple-touch-icon-120×120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120×120"
+      href="/images/icons/apple-touch-icon-144×144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152×152"
+      href="/images/icons/apple-touch-icon-152×152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180×180"
+      href="/images/icons/apple-touch-icon-180×180.png"
+    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png" />
+    <link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#fff" />
+
+    <link
+      href="/images/splash/iphone5_splash.png"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splash/iphone6_splash.png"
+      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splash/iphoneplus_splash.png"
+      media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splash/iphonex_splash.png"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splash/iphonexr_splash.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splash/iphonexsmax_splash.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splash/ipad_splash.png"
+      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splash/ipadpro1_splash.png"
+      media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splash/ipadpro3_splash.png"
+      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splash/ipadpro2_splash.png"
+      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+
+    <title>Discount Calculator</title>
+  </head>
+  <body class="antialiased h-full min-h-full">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <div style="display: none">
+      <svg
+        aria-hidden="true"
+        style="position: absolute; width: 0; height: 0; overflow: hidden"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <defs>
+          <symbol id="icon-bin" viewBox="0 0 32 32">
+            <path
+              d="M18.67 25.766c-0.427 0-0.732-0.305-0.732-0.732v-13.184c0-0.366 0.305-0.732 0.732-0.732h1.465c0.366 0 0.732 0.366 0.732 0.732v13.184c0 0.427-0.366 0.732-0.732 0.732h-1.465zM28.68 5.258c0.488 0 0.977 0.488 0.977 0.977v0.977c0 0.549-0.488 0.977-0.977 0.977h-0.977v20.508c0 1.648-1.343 2.93-2.93 2.93h-17.578c-1.648 0-2.93-1.282-2.93-2.93v-20.508h-0.977c-0.549 0-0.977-0.427-0.977-0.977v-0.977c0-0.488 0.427-0.977 0.977-0.977h5.005l2.075-3.418c0.488-0.855 1.465-1.465 2.502-1.465h6.165c1.038 0 2.014 0.61 2.502 1.465l2.075 3.418h5.066zM12.749 3.488l-1.038 1.77h8.484l-1.038-1.77c-0.061-0.061-0.183-0.183-0.305-0.183h-5.737c-0.061 0-0.061 0-0.061 0-0.122 0-0.244 0.122-0.305 0.183zM24.773 28.695v-20.508h-17.578v20.508h17.578zM11.834 25.766c-0.427 0-0.732-0.305-0.732-0.732v-13.184c0-0.366 0.305-0.732 0.732-0.732h1.465c0.366 0 0.732 0.366 0.732 0.732v13.184c0 0.427-0.366 0.732-0.732 0.732h-1.465z"
+            ></path>
+          </symbol>
+          <symbol id="icon-check" viewBox="0 0 32 32">
+            <path
+              d="M10.965 27.17l-10.132-10.132c-0.61-0.61-0.61-1.648 0-2.258l2.197-2.197c0.61-0.61 1.587-0.61 2.197 0l6.897 6.836 14.648-14.648c0.61-0.61 1.587-0.61 2.197 0l2.197 2.197c0.61 0.61 0.61 1.648 0 2.258l-17.944 17.944c-0.61 0.61-1.648 0.61-2.258 0z"
+            ></path>
+          </symbol>
+          <symbol id="icon-chevron-right" viewBox="0 0 32 32">
+            <path
+              d="M22.796 14.885l-11.732-14.048c-0.515-0.615-1.349-0.615-1.865 0-0.515 0.615-0.515 1.614 0 2.229l10.802 12.934-10.801 12.934c-0.515 0.615-0.515 1.614 0 2.231 0.515 0.615 1.35 0.615 1.865 0l11.732-14.048c0.507-0.609 0.507-1.623-0.001-2.231z"
+            ></path>
+          </symbol>
+          <symbol id="icon-edit" viewBox="0 0 32 32">
+            <path
+              d="M29.081 2.895c-1.606-1.605-3.722-2.52-5.807-2.52-1.759 0-3.378 0.652-4.561 1.833l-4.753 4.789c-0.015 0.014-0.031 0.022-0.046 0.037-0.008 0.008-0.013 0.019-0.021 0.025l0.002 0.002-10.087 10.165c-0.465 0.462-0.802 1.037-0.989 1.665l-2.294 8.309c-0.002 0.022-0.151 0.675-0.151 1.007 0 1.887 1.532 3.418 3.422 3.418 0.376 0 1.104-0.18 1.13-0.184l8.279-2.177c0.629-0.186 1.2-0.526 1.665-0.992l14.905-15.022c2.711-2.713 2.405-7.26-0.695-10.355zM16.014 23.612c-0.080-0.881-0.329-1.745-0.702-2.565l9.233-9.232c0.564 1.783 0.274 3.648-0.963 4.887-0.008 0.008-0.018 0.013-0.024 0.020l0.014 0.013-7.547 7.607c0-0.243 0.012-0.481-0.011-0.73zM14.821 20.156c-0.364-0.599-0.778-1.177-1.291-1.689-0.597-0.597-1.281-1.064-1.996-1.457l9.309-9.309c0.73 0.324 1.431 0.786 2.049 1.404 0.528 0.526 0.936 1.116 1.251 1.729l-9.321 9.32zM10.615 16.549c-0.904-0.364-1.852-0.572-2.801-0.585l7.522-7.58c1.151-1.123 2.828-1.446 4.479-1.037l-9.201 9.202zM4.444 29.548c-0.106 0.024-0.438 0.108-0.662 0.124-0.803-0.010-1.454-0.662-1.454-1.465 0.012-0.164 0.077-0.446 0.1-0.549l1.028-3.725c1.116-0.030 2.317 0.404 3.262 1.351 0.959 0.957 1.41 2.182 1.361 3.311l-3.635 0.952zM9.041 28.341c-0.023-1.311-0.557-2.674-1.633-3.748-1.018-1.019-2.35-1.606-3.678-1.659l0.973-3.523c0.070-0.234 0.21-0.466 0.382-0.668 1.959-1.402 4.972-0.988 7.064 1.106 2.214 2.213 2.556 5.455 0.851 7.391-0.113 0.060-0.228 0.116-0.351 0.152l-3.608 0.948zM28.394 11.871l-1.645 1.657c0-0.221 0.026-0.433 0.006-0.658-0.172-1.89-1.053-3.717-2.483-5.146-1.591-1.592-3.7-2.505-5.789-2.511l1.617-1.631c0.81-0.808 1.939-1.255 3.175-1.255 1.571 0 3.186 0.711 4.427 1.948 1.165 1.163 1.859 2.608 1.959 4.070 0.092 1.364-0.358 2.615-1.267 3.524z"
+            ></path>
+          </symbol>
+          <symbol id="icon-plus" viewBox="0 0 32 32">
+            <path
+              d="M29.393 12.652c1.186 0 2.232 1.046 2.232 2.232v2.232c0 1.256-1.046 2.232-2.232 2.232h-10.045v10.045c0 1.256-1.046 2.232-2.232 2.232h-2.232c-1.256 0-2.232-0.977-2.232-2.232v-10.045h-10.045c-1.256 0-2.232-0.977-2.232-2.232v-2.232c0-1.186 0.977-2.232 2.232-2.232h10.045v-10.045c0-1.186 0.977-2.232 2.232-2.232h2.232c1.186 0 2.232 1.046 2.232 2.232v10.045h10.045z"
+            ></path>
+          </symbol>
+          <symbol id="icon-store" viewBox="0 0 32 32">
+            <path
+              d="M16.024 22.258v-7.816h3.126v12.505c0 0.879-0.733 1.563-1.563 1.563h-12.505c-0.879 0-1.563-0.684-1.563-1.563v-12.505h3.126v7.816h9.379zM31.363 10.485c0.684 1.026-0.049 2.394-1.27 2.394h-28.137c-1.27 0-2.003-1.368-1.319-2.394l4.152-6.253c0.293-0.44 0.782-0.733 1.319-0.733h19.784c0.537 0 1.026 0.293 1.319 0.733l4.152 6.253zM25.403 27.729v-13.287h3.126v13.287c0 0.44-0.391 0.782-0.782 0.782h-1.563c-0.44 0-0.782-0.342-0.782-0.782z"
+            ></path>
+          </symbol>
+          <symbol id="icon-units" viewBox="0 0 32 32">
+            <path
+              d="M8.188 16c4.272 0 7.813 3.54 7.813 7.813 0 4.334-3.54 7.813-7.813 7.813-4.333 0-7.813-3.479-7.813-7.813 0-4.272 3.479-7.813 7.813-7.813zM31.32 12.704c0.854 1.465-0.244 3.296-2.014 3.296h-13c-1.77 0-2.869-1.831-1.953-3.296l6.47-11.169c0.427-0.671 1.16-1.16 1.953-1.16 0.855 0 1.587 0.488 2.014 1.16l6.531 11.169zM29.672 17.953c1.038 0 1.953 0.916 1.953 1.953v9.766c0 1.099-0.916 1.953-1.953 1.953h-9.766c-1.099 0-1.953-0.855-1.953-1.953v-9.766c0-1.038 0.855-1.953 1.953-1.953h9.766z"
+            ></path>
+          </symbol>
+          <symbol id="icon-weigth" viewBox="0 0 32 32">
+            <path
+              d="M27.719 4.281c2.136 0 3.906 1.77 3.906 3.906v19.531c0 2.197-1.77 3.906-3.906 3.906h-23.438c-2.197 0-3.906-1.709-3.906-3.906v-19.531c0-2.136 1.709-3.906 3.906-3.906h1.526c-0.977 1.77-1.526 3.784-1.526 5.859 0 6.47 5.249 11.719 11.719 11.719 6.409 0 11.719-5.249 11.719-11.719 0-2.075-0.61-4.089-1.587-5.859h1.587zM16 19.906c-5.432 0-9.766-4.334-9.766-9.766 0-5.371 4.334-9.766 9.766-9.766 5.371 0 9.766 4.395 9.766 9.766 0 5.432-4.395 9.766-9.766 9.766zM15.939 10.69c-1.343 0-2.38 1.099-2.38 2.38 0 1.404 1.038 2.441 2.441 2.441 1.343 0 2.441-1.038 2.441-2.441 0-0.61-0.305-1.221-0.671-1.648l2.014-4.761c0.244-0.488 0-1.099-0.488-1.282-0.488-0.244-1.099 0-1.282 0.488l-2.075 4.822z"
+            ></path>
+          </symbol>
+        </defs>
+      </svg>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126968622-1"></script>
+    <script>
+      function loadAnalytics() {
+        window.dataLayer = window.dataLayer || []
+        function gtag() {
+          dataLayer.push(arguments)
+        }
+        gtag('js', new Date())
+        gtag('config', 'UA-126968622-1')
+      }
+      if ('%NODE_ENV%' !== 'development') {
+        loadAnalytics()
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+.header {
+  @apply grid gap-4 items-center h-12 py-1 px-4;
+  grid-template-columns: max-content minmax(0, 2fr) max-content;
+  align-items: stretch;
+}
+
+.item {
+  display: grid;
+  align-items: center;
+}

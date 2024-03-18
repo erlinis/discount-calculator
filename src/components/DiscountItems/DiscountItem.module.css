@@ -1,0 +1,17 @@
+/* https://css-tricks.com/almanac/properties/m/mask-composite/ */
+
+.ticket {
+    /* Black to transparent */
+    --g: #000 98%, #0000;
+    --s: 8px;
+    --b: 73.75%;
+    mask:
+        radial-gradient(var(--s) at 0 var(--b), var(--g)) /* left circle */,
+        radial-gradient(var(--s) at 100% var(--b), var(--g)) /* right circle */,
+        linear-gradient(#000 0 0) /*  destination, black background */;
+    mask-composite: exclude /* ✨ */;
+}
+
+.ticket-shadow {
+    filter: drop-shadow(3px 5px 10px rgba(0, 0, 0, 0.15));
+}

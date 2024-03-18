@@ -1,0 +1,6 @@
+.card {
+  @apply bg-white shadow-custom overflow-hidden;
+}
+.body {
+  @apply p-5;
+}
