@@ -5,7 +5,7 @@ import { formatPrice } from "../../utils/format";
 import { Button } from "../button/Button";
 import { Card, CardBody } from "../card/Card";
 import { Icon } from "../icon/Icon";
-import { SeparatorRound } from "../separator/Separator";
+import { Separator } from "../separator/Separator";
 import styles from "./DiscountItem.module.css";
 
 export function DiscountItem({
@@ -20,17 +20,17 @@ export function DiscountItem({
   return (
     <div className={styles["ticket-shadow"]}>
       <Card className={styles.ticket}>
-        <header className="flex gap-2 justify-space-between px-4">
-          <div className="text-primary bg-primary-200 font-semibold h-12 w-14 rounded-b-[15px] flex items-center justify-center shrink-0">
+        <header className="justify-space-between flex gap-2 px-4">
+          <div className="text-primary bg-primary-200 flex h-12 w-14 shrink-0 items-center justify-center rounded-b-[15px] font-semibold">
             {discountItem.discount}
             <sub className="text-xs"> %</sub>
           </div>
 
-          <div className="flex-1 flex items-center text-secondary text-lg font-semibold">
+          <div className="text-secondary flex flex-1 items-center text-lg font-semibold">
             {discountItem.name}
           </div>
 
-          <div className="shrink-0 flex">
+          <div className="flex shrink-0">
             <Form
               method="post"
               className="flex items-center"
@@ -41,7 +41,7 @@ export function DiscountItem({
               <Button
                 type="submit"
                 variant="none"
-                className="flex-1 text-third-400"
+                className="text-third-400 flex-1"
                 value="delete"
                 shape="square"
               >
@@ -51,13 +51,13 @@ export function DiscountItem({
           </div>
         </header>
 
-        <CardBody className="grid grid-cols-3 gap-0 items-center pb-0">
-          <span className="flex-1 text-secondary text-lg font-medium">
+        <CardBody className="grid grid-cols-3 items-center gap-0 pb-0">
+          <span className="text-secondary flex-1 text-lg font-medium">
             Price
           </span>
 
           <div className="col-start-2 col-end-4 flex items-center justify-end gap-2">
-            <div className="text-sm text-third align-baseline">
+            <div className="text-third overflow-hidden text-ellipsis whitespace-nowrap align-baseline text-sm">
               {priceElement}
             </div>
             <div className="text-secondary flex justify-end text-lg font-semibold">
@@ -66,16 +66,18 @@ export function DiscountItem({
           </div>
 
           <span className="text-gray-light text-sm font-medium">Saving</span>
-          <div className="col-start-2 col-end-4 text-gray-light text-sm font-medium flex justify-end">
+          <div className="text-gray-light col-start-2 col-end-4 flex justify-end text-sm font-medium">
             {formatPrice(discountItem.saving)}
           </div>
         </CardBody>
 
-        <div className="grid grid-cols-2 items-top px-5 mb-2">
-          <span className="flex justify-start text-secondary text-lg font-semibold">
+        <Separator />
+
+        <div className="items-top mb-2 grid grid-cols-2 px-5">
+          <span className="text-secondary flex justify-start overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold">
             Sale Price
           </span>
-          <div className="flex justify-end text-primary text-lg font-semibold">
+          <div className="text-primary flex justify-end text-lg font-semibold">
             {formatPrice(discountItem.salesPrice)}
           </div>
         </div>
